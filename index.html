@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>พระปลัดอานนท์ อติภทฺโท - Digital Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Anuphan & Comfortaa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Comfortaa:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            anuphan: ['Anuphan', 'sans-serif'],
+            comfortaa: ['Comfortaa', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium Design Tokens */
+    :root {
+      --theme-primary: #BEE7D3;
+      --theme-text: #2e6248;
+      --theme-hover: #a6dcbf;
+      --theme-ring: rgba(190, 231, 211, 0.4);
+    }
+    
+    body {
+      font-family: 'Anuphan', sans-serif;
+      background-color: #FFF8EE;
+    }
+
+    .theme-accent-bg { background-color: var(--theme-primary); }
+    .theme-accent-text { color: var(--theme-text); }
+    .theme-accent-border { border-color: var(--theme-primary); }
+    .theme-accent-ring:focus { --tw-ring-color: var(--theme-ring); }
+
+    /* Custom scrollbar elimination for navigation sliding */
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* News Ticker (Marquee) Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-[#253041] selection:bg-[#F6D78B] flex flex-col transition-colors duration-300">
+
+  <!-- ==================== HEADER & TOP NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-white bg-opacity-95 backdrop-blur-md border-b border-orange-100/40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand & Identity -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+        <div class="theme-accent-bg w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shadow-inner flex-shrink-0 transition-all duration-300">
+          <i class="fa-solid fa-award text-xl text-[#253041]"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-base sm:text-lg leading-tight text-[#253041] flex items-center gap-1.5">
+            <span id="header-title">พระปลัดอานนท์ อติภทฺโท</span>
+            <span id="header-surname" class="text-[#6E7787] text-xs font-normal hidden sm:inline">(สุรสรณ์)</span>
+          </h1>
+          <p id="header-subtitle" class="text-xs text-[#6E7787] font-medium max-w-[200px] sm:max-w-[280px] md:max-w-none truncate">พระนักบริหาร และการเผยแผ่พระพุทธศาสนาระดับสากล</p>
+        </div>
+      </div>
+
+      <!-- Desktop/Tablet Top Fixed Navigation Bar -->
+      <nav class="hidden lg:flex items-center space-x-1">
+        <button onclick="navigateTo('home')" id="nav-home" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">หน้าแรก</button>
+        <button onclick="navigateTo('profile')" id="nav-profile" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">ประวัติส่วนตัว</button>
+        <button onclick="navigateTo('education')" id="nav-education" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">การศึกษา & อบรม</button>
+        <button onclick="navigateTo('experience')" id="nav-experience" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">ผลงาน & สถิติ</button>
+        <button onclick="navigateTo('uk')" id="nav-uk" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">ภารกิจ Scotland</button>
+        <button onclick="navigateTo('gallery')" id="nav-gallery" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">แกลเลอรีรูปภาพ</button>
+        <button onclick="navigateTo('trends')" id="nav-trends" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">เทรนด์โลก</button>
+        <button onclick="navigateTo('contact')" id="nav-contact" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">ติดต่อสอบถาม</button>
+        <button onclick="navigateTo('admin')" id="nav-admin" class="px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50">ผู้ดูแลระบบ</button>
+      </nav>
+
+      <!-- Language & Theme Controllers -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        
+        <!-- Theme Switched Mini pill -->
+        <div class="hidden md:flex items-center bg-gray-50 p-1 rounded-full border border-gray-100">
+          <button onclick="changeTheme('mint')" class="w-6 h-6 rounded-full bg-[#BEE7D3] m-0.5 border-2 border-gray-700 scale-110 shadow-xs" id="theme-mint-btn"></button>
+          <button onclick="changeTheme('saffron')" class="w-6 h-6 rounded-full bg-[#F6D78B] m-0.5 border-2 border-transparent hover:scale-105" id="theme-saffron-btn"></button>
+          <button onclick="changeTheme('sky')" class="w-6 h-6 rounded-full bg-[#B8DDF2] m-0.5 border-2 border-transparent hover:scale-105" id="theme-sky-btn"></button>
+          <button onclick="changeTheme('lavender')" class="w-6 h-6 rounded-full bg-[#D9CDF7] m-0.5 border-2 border-transparent hover:scale-105" id="theme-lavender-btn"></button>
+        </div>
+
+        <!-- Language Picker -->
+        <div class="flex items-center bg-orange-50 border border-[#F6D78B]/40 rounded-full p-0.5">
+          <button onclick="changeLanguage('TH')" id="lang-TH" class="w-8 h-8 rounded-full text-xs font-bold transition-all theme-accent-bg text-[#253041]">TH</button>
+          <button onclick="changeLanguage('EN')" id="lang-EN" class="w-8 h-8 rounded-full text-xs font-bold transition-all text-[#6E7787] hover:text-[#253041]">EN</button>
+          <button onclick="changeLanguage('ID')" id="lang-ID" class="w-8 h-8 rounded-full text-xs font-bold transition-all text-[#6E7787] hover:text-[#253041]">ID</button>
+        </div>
+
+        <!-- Mobile Menu Hamburger button -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-gray-100 text-[#253041] hover:bg-gray-200">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE HORIZONTAL SCROLL BAR NAVIGATION -->
+  <div class="lg:hidden bg-white border-b border-orange-50 px-4 py-2.5 overflow-x-auto flex space-x-2 scrollbar-none">
+    <button onclick="navigateTo('home')" id="mobnav-home" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all theme-accent-bg text-[#253041]">หน้าแรก</button>
+    <button onclick="navigateTo('profile')" id="mobnav-profile" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">ประวัติส่วนตัว</button>
+    <button onclick="navigateTo('education')" id="mobnav-education" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">การศึกษา</button>
+    <button onclick="navigateTo('experience')" id="mobnav-experience" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">ผลงาน & สถิติ</button>
+    <button onclick="navigateTo('uk')" id="mobnav-uk" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">ภารกิจ Scotland</button>
+    <button onclick="navigateTo('gallery')" id="mobnav-gallery" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">แกลเลอรีรูปภาพ</button>
+    <button onclick="navigateTo('trends')" id="mobnav-trends" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">เทรนด์โลก</button>
+    <button onclick="navigateTo('contact')" id="mobnav-contact" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">ติดต่อสอบถาม</button>
+    <button onclick="navigateTo('admin')" id="mobnav-admin" class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]">แอดมิน</button>
+  </div>
+
+  <!-- MOBILE DRAWER MENU OVERLAY -->
+  <div id="mobile-drawer" class="hidden fixed inset-0 z-50 overflow-hidden lg:hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onclick="toggleMobileMenu()"></div>
+    <div class="fixed inset-y-0 right-0 max-w-full pl-10 flex">
+      <div class="w-screen max-w-sm bg-white shadow-xl flex flex-col p-6 animate-fade-in">
+        <div class="flex items-center justify-between pb-6 border-b border-gray-100">
+          <span class="font-bold text-lg text-[#253041]">เมนูนำทาง</span>
+          <button onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-gray-100 text-gray-500">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 py-6 space-y-2 overflow-y-auto">
+          <button onclick="navigateTo('home')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.home">หน้าแรก</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('profile')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.profile">ประวัติส่วนตัว</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('education')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.education">การศึกษา & อบรม</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('experience')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.experience">ผลงาน & สถิติ</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('uk')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.uk">ภารกิจ Scotland</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('gallery')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.gallery">แกลเลอรีรูปภาพ</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('trends')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.trends">เทรนด์โลก</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('contact')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.contact">ติดต่อสอบถาม</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          <button onclick="navigateTo('admin')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-left font-semibold hover:bg-orange-50"><span data-t="menu.admin">ผู้ดูแลระบบ</span><i class="fa-solid fa-chevron-right text-xs"></i></button>
+        </div>
+
+        <!-- Mobile color theme switches -->
+        <div class="pt-4 border-t border-gray-100 text-center">
+          <p class="text-xs text-gray-400 mb-3">สลับสีธีมเว็บไซต์</p>
+          <div class="flex justify-center space-x-4">
+            <button onclick="changeTheme('mint')" class="w-9 h-9 rounded-full bg-[#BEE7D3] border-2 border-gray-800 shadow"></button>
+            <button onclick="changeTheme('saffron')" class="w-9 h-9 rounded-full bg-[#F6D78B] border-2 border-transparent"></button>
+            <button onclick="changeTheme('sky')" class="w-9 h-9 rounded-full bg-[#B8DDF2] border-2 border-transparent"></button>
+            <button onclick="changeTheme('lavender')" class="w-9 h-9 rounded-full bg-[#D9CDF7] border-2 border-transparent"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GLOBAL NEWS AUTO-FEED TICKER ==================== -->
+  <div class="bg-[#253041] text-white py-2.5 overflow-hidden border-b border-orange-100/10">
+    <div class="max-w-7xl mx-auto px-4 flex items-center">
+      <span class="bg-[#F6D78B] text-[#253041] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mr-4 flex-shrink-0 flex items-center gap-1">
+        <i class="fa-solid fa-bolt text-xs"></i> GLOBAL Dhamma TECH
+      </span>
+      <div class="overflow-hidden relative w-full text-xs sm:text-sm font-light">
+        <div id="marquee-holder" class="animate-marquee whitespace-nowrap">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN PAGE VIEWPORT ==================== -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    
+    <!-- 1. HOME VIEW -->
+    <div id="view-home" class="space-y-12 page-view">
+      
+      <!-- HERO CAROUSEL / HIGHLIGHT BLOCK -->
+      <div class="bg-white rounded-3xl p-6 md:p-12 border border-[#FFF8EE] shadow-sm flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#FFF8EE] rounded-full blur-3xl opacity-60 -z-10"></div>
+        
+        <!-- Profile Frame -->
+        <div class="w-full lg:w-1/3 flex flex-col items-center">
+          <div class="relative group">
+            <div class="theme-accent-bg absolute inset-0 rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition duration-300"></div>
+            <div class="relative w-64 h-80 rounded-2xl overflow-hidden bg-orange-50 border-4 border-white shadow-md flex items-center justify-center">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=600" alt="รูปพระปลัดอานนท์" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="mt-4">
+            <span class="bg-orange-100 text-[#876210] text-xs font-bold px-3 py-1.5 rounded-full border border-[#F6D78B]/40" id="hero-badge-title">
+              สมณศักดิ์: พระปลัด
+            </span>
+          </div>
+        </div>
+
+        <!-- Detail Block -->
+        <div class="w-full lg:w-2/3 space-y-6 text-center lg:text-left">
+          <div class="space-y-2">
+            <div class="inline-flex items-center space-x-2 bg-[#FFF8EE] rounded-full px-4 py-1.5 border border-[#BEE7D3]">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-xs font-medium text-[#253041]" id="hero-status-tag">ระบบอัปเดตข้อมูลปี พ.ศ. 2569</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#253041]">
+              <span id="hero-title-name">พระปลัดอานนท์ อติภทฺโท</span> 
+              <span class="text-[#6E7787] font-normal" id="hero-surname-name">(สุรสรณ์)</span>
+            </h2>
+          </div>
+
+          <!-- Roles listed -->
+          <div class="space-y-3" id="hero-roles-list">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Dynamic Counter Box Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl border border-orange-50 text-center shadow-sm">
+              <span class="text-xs font-medium text-[#6E7787] uppercase tracking-wider block mb-1" data-t="quickStats.vassa">พรรษา</span>
+              <span id="stat-vassa" class="text-3xl font-bold font-comfortaa text-[#253041]">-</span>
+              <p class="text-[10px] text-gray-400 mt-1" id="stat-vassa-desc">อุปสมบทปี 2555</p>
+            </div>
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl border border-orange-50 text-center shadow-sm">
+              <span class="text-xs font-medium text-[#6E7787] uppercase tracking-wider block mb-1" data-t="quickStats.age">อายุ (ปี)</span>
+              <span id="stat-age" class="text-3xl font-bold font-comfortaa text-[#253041]">-</span>
+              <p class="text-[10px] text-gray-400 mt-1" id="stat-age-desc">เกิดปี 2532</p>
+            </div>
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl border border-orange-50 text-center shadow-sm">
+              <span class="text-xs font-medium text-[#6E7787] uppercase tracking-wider block mb-1" data-t="quickStats.mission">ภารกิจปัจจุบัน</span>
+              <span class="text-base font-bold text-[#253041] block mt-1.5" id="stat-mission-name">สหราชอาณาจักร 1 ปี</span>
+              <p class="text-[10px] text-gray-400 mt-1">Wat Phra Dhammakaya Scotland</p>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+            <button onclick="navigateTo('experience')" class="theme-accent-bg hover:scale-105 transition duration-300 font-bold px-6 py-3.5 rounded-full text-sm flex items-center gap-2 text-[#253041] shadow-sm">
+              <span id="btn-perf-desc">ดูผลงานเชิงประจักษ์</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button onclick="navigateTo('contact')" class="bg-[#253041] hover:bg-[#1a2330] text-white px-6 py-3.5 rounded-full text-sm font-semibold transition">
+              ติดต่ออาราธนาศาสนกิจ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY ACHIEVEMENTS -->
+      <div class="space-y-6">
+        <div class="text-center space-y-2">
+          <h3 class="text-2xl sm:text-3xl font-bold text-[#253041]" data-t="highlights.title">ผลงานเชิงประจักษ์เด่น</h3>
+          <p class="text-sm text-[#6E7787] max-w-2xl mx-auto">ผลสำเร็จที่เกิดจากการศึกษา การปกครอง เผยแผ่ธรรมะ และสร้างศาสนทายาท</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-xs hover:shadow-md transition group">
+            <div class="w-12 h-12 rounded-2xl bg-[#BEE7D3] flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+              <i class="fa-solid fa-shield-halved text-[#2e6248] text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-[#253041] mb-2" data-t="highlights.card1Title">งานปกครอง & การศึกษา</h4>
+            <p class="text-sm text-[#6E7787]" data-t="highlights.card1Desc">ดูแลและบริหารจัดการสามเณรสะสมรวมมากกว่า 1,000 รูป</p>
+            <div class="pt-4 mt-4 border-t border-gray-100 flex items-center text-xs font-bold text-[#2e6248] cursor-pointer" onclick="navigateTo('experience'); setExpTab('samanera');">
+              สถิติกราฟการปกครองกุฏิเณร <i class="fa-solid fa-chevron-right ml-1"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-xs hover:shadow-md transition group">
+            <div class="w-12 h-12 rounded-2xl bg-[#F6D78B] flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+              <i class="fa-solid fa-book-open text-[#876210] text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-[#253041] mb-2" data-t="highlights.card2Title">งานวิชาการสอบไล่</h4>
+            <p class="text-sm text-[#6E7787]" data-t="highlights.card2Desc">ขับเคลื่อนสถิติผู้สอบผ่านนักธรรมและบาลีกว่า 1,500 รูป/คน</p>
+            <div class="pt-4 mt-4 border-t border-gray-100 flex items-center text-xs font-bold text-[#876210] cursor-pointer" onclick="navigateTo('experience'); setExpTab('education');">
+              ผลสถิตินักธรรม-บาลีสำนักเรียน <i class="fa-solid fa-chevron-right ml-1"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-xs hover:shadow-md transition group">
+            <div class="w-12 h-12 rounded-2xl bg-[#B8DDF2] flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+              <i class="fa-solid fa-wand-magic-sparkles text-[#1c5375] text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-[#253041] mb-2" data-t="highlights.card3Title">นวัตกรรม & สื่อสร้างสรรค์</h4>
+            <p class="text-sm text-[#6E7787]" data-t="highlights.card3Desc">ผู้ผลิตสื่อกราฟิก E-Card และวิทยากรอบรมเยาวชนทั่วประเทศ</p>
+            <div class="pt-4 mt-4 border-t border-gray-100 flex items-center text-xs font-bold text-[#1c5375] cursor-pointer" onclick="navigateTo('experience'); setExpTab('propagation');">
+              อบรมค่าย & สื่อเผยแผ่ <i class="fa-solid fa-chevron-right ml-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALLERY PREVIEW -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-orange-50 shadow-xs space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-[#253041]" id="gallery-preview-title">ประมวลภาพกิจกรรมเด่นล่าสุด</h3>
+            <p class="text-xs sm:text-sm text-[#6E7787]">ภาพภารกิจการบวช ค่ายศีลธรรม และการทำงานในสก็อตแลนด์</p>
+          </div>
+          <button onclick="navigateTo('gallery')" class="text-xs sm:text-sm font-semibold flex items-center gap-1 text-orange-600 hover:text-orange-700">
+            ดูแกลเลอรีทั้งหมด <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+
+        <div id="gallery-home-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. BIOGRAPHY/PROFILE VIEW -->
+    <div id="view-profile" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-circle-user text-orange-500"></i> ประวัติส่วนตัว & ปณิธานความมุ่งมั่น
+        </h2>
+        <p class="text-sm text-[#6E7787]">ประวัติและข้อมูลสมณสารสำหรับการเผยแผ่พระศาสนาทั้งในประเทศและสากล</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Public Profile Sheet -->
+        <div class="lg:col-span-2 space-y-8">
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#253041] border-l-4 border-emerald-400 pl-3">ข้อมูลพื้นฐานทั่วไป</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+              <div>
+                <span class="text-xs text-gray-400 block">ชื่อ-สกุล</span>
+                <span class="font-bold text-[#253041]">พระปลัดอานนท์ อติภทฺโท (สุรสรณ์)</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">สมณศักดิ์</span>
+                <span class="font-bold text-[#253041]">ฐานานุกรมในฐานานุรูปของเจ้าคณะเขตตลิ่งชัน</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">วันเดือนปีเกิด</span>
+                <span class="font-bold text-[#253041]">28 พฤษภาคม พ.ศ. 2532 (อายุ 37 ปี)</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">การบรรพชา</span>
+                <span class="font-bold text-[#253041]">31 มีนาคม พ.ศ. 2555 ณ วัดพระธรรมกาย</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">การอุปสมบท</span>
+                <span class="font-bold text-[#253041]">10 เมษายน พ.ศ. 2555 ณ วัดพระธรรมกาย</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">สังกัดวัด</span>
+                <span class="font-bold text-[#253041]">วัดชัยพฤกษมาลาราชวรวิหาร (พระอารามหลวง ชั้นโท)</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">ที่ตั้งวัดสังกัด</span>
+                <span class="font-bold text-[#253041]">แขวงตลิ่งชัน เขตตลิ่งชัน กรุงเทพมหานคร</span>
+              </div>
+              <div>
+                <span class="text-xs text-gray-400 block">สัญชาติ / ศาสนา</span>
+                <span class="font-bold text-[#253041]">ไทย / พุทธ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Goals & Motto -->
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#253041] border-l-4 border-amber-400 pl-3">ปณิธานและเป้าหมายชีวิต</h3>
+            
+            <div class="space-y-4">
+              <div class="bg-[#FFF8EE] p-5 rounded-2xl border border-orange-100/40">
+                <span class="text-xs font-bold text-amber-800 block mb-2">เป้าหมายอนาคต</span>
+                <p class="text-sm text-amber-950 font-medium leading-relaxed">
+                  "เข้าถึงแก่นแท้วิชชาธรรมกาย และเผยแผ่ธรรมะแห่งพุทธองค์ ขยายสายธารแห่งสติสมาธิแก่ชาวต่างชาติและประชากรโลกสืบไป"
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div class="bg-slate-50 p-5 rounded-2xl">
+                  <span class="font-semibold text-gray-400 block mb-1">คติธรรมนำทาง 1</span>
+                  <p class="font-medium text-gray-700">"รักษาใจ รักษาศูนย์กลางกายให้สว่างสดใสเป็นประจำทุกวัน"</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl">
+                  <span class="font-semibold text-gray-400 block mb-1">คติธรรมนำทาง 2</span>
+                  <p class="font-medium text-gray-700">"จงพิจารณาเตือนตนด้วยตนเอง ไม่มีวิชาใดจะยากกว่าความพากเพียรตั้งใจ"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right personality card -->
+        <div class="space-y-6">
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#253041]">อุปนิสัย & ความสามารถพิเศษ</h3>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-[#BEE7D3] text-[#2e6248] font-semibold px-3 py-1.5 rounded-full">พูดน้อยใจเย็น</span>
+              <span class="bg-[#B8DDF2] text-[#1c5375] font-semibold px-3 py-1.5 rounded-full">ใจใสรักการทำสมาธิ</span>
+              <span class="bg-[#D9CDF7] text-[#4e388c] font-semibold px-3 py-1.5 rounded-full">มีมนุษยสัมพันธ์ดี</span>
+              <span class="bg-[#F2B7A7] text-orange-950 font-semibold px-3 py-1.5 rounded-full">รักการศึกษาพัฒนาตนเอง</span>
+            </div>
+
+            <div class="border-t border-gray-100 pt-4 space-y-4 text-sm text-gray-600">
+              <div>
+                <span class="font-bold text-[#253041] block mb-1">ความเชี่ยวชาญส่วนตัว</span>
+                <p>งานกราฟิกดีไซน์, ผลิต E-Card, การจัดการสารสนเทศและระบบธุรการของสำนักเรียนและคณะสงฆ์</p>
+              </div>
+              <div>
+                <span class="font-bold text-[#253041] block mb-1">งานอดิเรก</span>
+                <p>อ่านตำราและคู่มือภาษาต่างประเทศ, ดูสารคดีวิทยาการรอบโลก, บันทึกการเจริญจิตภาวนาสมาธิ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. EDUCATION VIEW -->
+    <div id="view-education" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-graduation-cap text-indigo-500"></i> ประวัติการศึกษาและการอบรม
+        </h2>
+        <p class="text-sm text-[#6E7787]">การศึกษาทั้งทางโลกและทางธรรม รวมถึงหลักสูตรเตรียมการปกครองของคณะสงฆ์</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Secular -->
+        <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <h3 class="text-lg font-bold text-[#253041] border-b border-gray-100 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-school text-orange-400"></i> สายการศึกษาทางโลก
+          </h3>
+
+          <div class="relative border-l-2 border-orange-200 pl-6 ml-3 space-y-8 text-sm">
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-orange-400 border-2 border-white"></div>
+              <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-0.5 rounded-full block w-max mb-1">ระดับปริญญาโท</span>
+              <h4 class="font-bold text-gray-800">มหาวิทยาลัยมหาจุฬาลงกรณราชวิทยาลัย / จุฬาลงกรณ์มหาวิทยาลัย</h4>
+              <p class="text-gray-500">กำลังเข้าศึกษาเพิ่มเติม เพื่อประยุกต์ทฤษฎีการเผยแผ่</p>
+            </div>
+
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gray-400 border-2 border-white"></div>
+              <span class="bg-gray-100 text-gray-800 text-[10px] font-bold px-2 py-0.5 rounded-full block w-max mb-1">ระดับปริญญาตรี</span>
+              <h4 class="font-bold text-gray-800">สำเร็จการศึกษาระดับปริญญาตรีแล้ว</h4>
+              <p class="text-gray-500">เพิ่มพูนวิทยาการสารสนเทศและการบริหารเบื้องต้น</p>
+            </div>
+
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gray-300 border-2 border-white"></div>
+              <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full block w-max mb-1">มัธยมศึกษาตอนปลาย</span>
+              <h4 class="font-bold text-gray-800">แผนการเรียนศิลป์-คำนวณ โรงเรียนปทุมคงคา</h4>
+              <p class="text-gray-500">สำเร็จการศึกษาตามวิถีโรงเรียนชายล้วนระดับประวัติศาสตร์ในกรุงเทพฯ</p>
+            </div>
+
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gray-200 border-2 border-white"></div>
+              <span class="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded-full block w-max mb-1">ระดับประถมศึกษา</span>
+              <h4 class="font-bold text-gray-800">โรงเรียนวัดธาตุทอง กรุงเทพฯ</h4>
+              <p class="text-gray-500">การศึกษาพื้นฐานท่ามกลางร่มเงาของบวรพระอาราม</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ecclesiastical and Courses -->
+        <div class="space-y-8">
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#253041] border-b border-gray-100 pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-dharmachakra text-[#2e6248]"></i> การศึกษาธรรมวินัย
+            </h3>
+            
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start space-x-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800">นักธรรมชั้นเอก (น.ธ.เอก)</h4>
+                  <p class="text-xs text-gray-500">สอบไล่ไล่ได้เมื่อ พ.ศ. 2557 ณ สำนักเรียนวัดยานนาวา กรุงเทพฯ</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+                <div>
+                  <h4 class="font-bold text-gray-800">ชำนาญการเผยแผ่และการสอนศีลธรรม</h4>
+                  <p class="text-xs text-gray-500">จัดระเบียบบรรยายค่ายเยาวชนระดับมัธยมและมหาวิทยาลัยทั่วราชอาณาจักร</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-[#253041] border-b border-gray-100 pb-3 flex items-center gap-2">
+              <i class="fa-solid fa-certificate text-indigo-500"></i> หลักสูตรอบรมพิเศษ
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-center">
+              <div class="bg-[#FFF8EE] p-4 rounded-2xl border border-orange-100/40">
+                <span class="font-bold text-indigo-800 block mb-1">อบรมพระนวกะ 1-5</span>
+                <p class="text-[10px] text-gray-400">เตรียมความพร้อมงานสงฆ์</p>
+              </div>
+              <div class="bg-[#FFF8EE] p-4 rounded-2xl border border-orange-100/40">
+                <span class="font-bold text-indigo-800 block mb-1">เตรียมเจ้าอาวาส</span>
+                <p class="text-[10px] text-gray-400">การบริหารการปกครองและระเบียบวินัย</p>
+              </div>
+              <div class="bg-[#FFF8EE] p-4 rounded-2xl border border-orange-100/40">
+                <span class="font-bold text-indigo-800 block mb-1">ปฏิบัติธรรมพิเศษ</span>
+                <p class="text-[10px] text-gray-400">พัฒนาจิตสมาธิและปัญญา</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4. EXPERIENCE & PERFORMANCE VIEW -->
+    <div id="view-experience" class="hidden space-y-8 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-briefcase text-teal-500"></i> สถิติผลงานเชิงประจักษ์ & ประสบการณ์ทำงาน
+        </h2>
+        <p class="text-sm text-[#6E7787]">รายงานผลการเรียนการศึกษา สถิติงานปกครอง และโครงการบวชเพื่อศาสนทายาท</p>
+      </div>
+
+      <!-- Experience Tab Switchers -->
+      <div class="flex flex-wrap border-b border-gray-200">
+        <button onclick="setExpTab('education')" id="tabbtn-education" class="py-3 px-6 text-sm font-bold border-b-2 border-[#253041] text-[#253041]">
+          1. งานสอนปริยัติธรรม
+        </button>
+        <button onclick="setExpTab('samanera')" id="tabbtn-samanera" class="py-3 px-6 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#253041]">
+          2. ปกครองสามเณร
+        </button>
+        <button onclick="setExpTab('propagation')" id="tabbtn-propagation" class="py-3 px-6 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#253041]">
+          3. โครงการบวชแสนรูป
+        </button>
+        <button onclick="setExpTab('construction')" id="tabbtn-construction" class="py-3 px-6 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#253041]">
+          4. งานสาธารณูปการ
+        </button>
+      </div>
+
+      <!-- TAB Content: Education Stats -->
+      <div id="exptab-education" class="space-y-6 exptab-view">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-100 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-[#253041]">ผลสอบสนามหลวงนักธรรม-บาลี สำนักเรียนวัดชัยพฤกษมาลา</h3>
+              <p class="text-xs text-gray-400">ควบคุมการวางแผนการศึกษาและมอบทุนแก่ผู้สอบผ่านสำเร็จหลักสูตร</p>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+              <span class="text-xs text-gray-400 font-bold">เลือกดูสถิติปี พ.ศ.</span>
+              <select onchange="updateStatsYear(this.value)" class="bg-orange-50 border border-[#F6D78B]/40 text-xs font-bold px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-300">
+                <option value="2565">พ.ศ. 2565</option>
+                <option value="2564">พ.ศ. 2564</option>
+                <option value="2566">พ.ศ. 2566</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Highlight Progress Circle summaries -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl text-center">
+              <span class="text-xs text-gray-500 font-bold block mb-1">สถิติสอบผ่านแผนกธรรม (สงฆ์)</span>
+              <span id="stat-result-dhamma" class="text-xl font-bold font-comfortaa text-emerald-700">สอบผ่าน 114 / 169 รูป</span>
+              <div class="w-full bg-gray-200 h-2 rounded-full mt-3 overflow-hidden">
+                <div id="stat-bar-dhamma" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 67%"></div>
+              </div>
+              <span id="stat-percent-dhamma" class="text-[10px] text-gray-400 mt-1 block">อัตราสอบผ่าน 67.4%</span>
+            </div>
+
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl text-center">
+              <span class="text-xs text-gray-500 font-bold block mb-1">สถิติสอบผ่านธรรมศึกษา (ฆราวาส)</span>
+              <span id="stat-result-dhamma-edu" class="text-xl font-bold font-comfortaa text-amber-700">สอบผ่าน 358 / 792 คน</span>
+              <div class="w-full bg-gray-200 h-2 rounded-full mt-3 overflow-hidden">
+                <div id="stat-bar-dhamma-edu" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 45%"></div>
+              </div>
+              <span id="stat-percent-dhamma-edu" class="text-[10px] text-gray-400 mt-1 block">อัตราสอบผ่าน 45.1%</span>
+            </div>
+
+            <div class="bg-[#FFF8EE] p-5 rounded-2xl text-center">
+              <span class="text-xs text-gray-500 font-bold block mb-1">สถิติสอบผ่านแผนกบาลี (รวมทุกชั้น)</span>
+              <span id="stat-result-pali" class="text-xl font-bold font-comfortaa text-blue-700">สอบผ่าน 6 / 145 รูป</span>
+              <div class="w-full bg-gray-200 h-2 rounded-full mt-3 overflow-hidden">
+                <div id="stat-bar-pali" class="bg-blue-400 h-full rounded-full transition-all duration-500" style="width: 4.1%"></div>
+              </div>
+              <span id="stat-percent-pali" class="text-[10px] text-gray-400 mt-1 block">อัตราสอบผ่าน 4.1%</span>
+            </div>
+          </div>
+
+          <!-- Statistics breakdown table -->
+          <div class="border border-orange-100 rounded-2xl overflow-hidden overflow-x-auto bg-white shadow-xs">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-[#FFF8EE] text-[#253041] font-bold text-xs uppercase border-b border-orange-100/40">
+                <tr>
+                  <th class="px-6 py-4">ประเภท/ระดับชั้นเรียน</th>
+                  <th class="px-6 py-4">ส่งสอบรวม (รูป/คน)</th>
+                  <th class="px-6 py-4">สอบได้</th>
+                  <th class="px-6 py-4">สอบตก</th>
+                  <th class="px-6 py-4">สัดส่วนความสำเร็จ</th>
+                </tr>
+              </thead>
+              <tbody id="stats-table-body" class="divide-y divide-gray-100 text-gray-600">
+                <!-- Populated dynamically via javascript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB Content: Samanera Care -->
+      <div id="exptab-samanera" class="hidden space-y-6 exptab-view">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-100 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-[#253041]">สถิติจำนวนสามเณรในความปกครองและการศึกษาสงเคราะห์</h3>
+              <p class="text-xs text-gray-400">ควบคุมระบบกุฏิ และจัดสรรทุนรางวัลความเพียร ณ สำนักเรียนวัดชัยพฤกษมาลา</p>
+            </div>
+            <span class="bg-[#BEE7D3] text-[#2e6248] text-xs font-bold px-4 py-1.5 rounded-full">
+              ดูแลและมอบทุนสะสม 1,000+ รูป
+            </span>
+          </div>
+
+          <!-- Dynamic SVG Line Chart -->
+          <div class="p-4 bg-[#FFF8EE] rounded-2xl border border-orange-50">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-xs font-bold text-[#253041] uppercase tracking-wider">แผนภูมิการเจริญเติบโต (จำนวนสามเณรที่ดูแล)</span>
+              <span class="text-xs text-[#6E7787]">แกน X: พ.ศ. / แกน Y: จำนวนเณร (รูป)</span>
+            </div>
+
+            <!-- SVG Graph Container -->
+            <div class="relative w-full h-64 sm:h-80">
+              <svg viewBox="0 0 700 240" class="w-full h-full" preserveAspectRatio="none">
+                <!-- Helper Grid lines -->
+                <line x1="50" y1="20" x2="650" y2="20" stroke="#f1e6da" stroke-width="1" stroke-dasharray="4" />
+                <line x1="50" y1="70" x2="650" y2="70" stroke="#f1e6da" stroke-width="1" stroke-dasharray="4" />
+                <line x1="50" y1="120" x2="650" y2="120" stroke="#f1e6da" stroke-width="1" stroke-dasharray="4" />
+                <line x1="50" y1="170" x2="650" y2="170" stroke="#f1e6da" stroke-width="1" stroke-dasharray="4" />
+                <line x1="50" y1="210" x2="650" y2="210" stroke="#e6d4c0" stroke-width="2" />
+
+                <!-- Chart Line Path -->
+                <path d="M 80 170 L 170 150 L 260 130 L 350 100 L 440 70 L 530 50 L 620 40" fill="none" stroke="#1c5375" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                
+                <!-- Area gradient filling -->
+                <path d="M 80 170 L 170 150 L 260 130 L 350 100 L 440 70 L 530 50 L 620 40 L 620 210 L 80 210 Z" fill="url(#gradient-chart)" opacity="0.15" />
+
+                <defs>
+                  <linearGradient id="gradient-chart" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#B8DDF2" />
+                    <stop offset="100%" stop-color="#FFF8EE" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Points labels -->
+                <circle cx="80" cy="170" r="6" fill="#1c5375" />
+                <text x="80" y="155" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">80 รูป</text>
+
+                <circle cx="170" cy="150" r="6" fill="#1c5375" />
+                <text x="170" y="135" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">100 รูป</text>
+
+                <circle cx="260" cy="130" r="6" fill="#1c5375" />
+                <text x="260" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">120 รูป</text>
+
+                <circle cx="350" cy="100" r="6" fill="#1c5375" />
+                <text x="350" y="85" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">150 รูป</text>
+
+                <circle cx="440" cy="70" r="6" fill="#1c5375" />
+                <text x="440" y="55" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">180 รูป</text>
+
+                <circle cx="530" cy="50" r="6" fill="#1c5375" />
+                <text x="530" y="35" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">200 รูป</text>
+
+                <circle cx="620" cy="40" r="6" fill="#1c5375" />
+                <text x="620" y="25" text-anchor="middle" font-size="10" font-weight="bold" fill="#253041">210 รูป</text>
+
+                <!-- X labels -->
+                <text x="80" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2562</text>
+                <text x="170" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2563</text>
+                <text x="260" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2564</text>
+                <text x="350" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2565</text>
+                <text x="440" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2566</text>
+                <text x="530" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2567</text>
+                <text x="620" y="230" text-anchor="middle" font-size="11" fill="#6E7787">พ.ศ. 2568</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600">
+            <div class="bg-[#FFF8EE]/60 p-6 rounded-2xl border border-orange-100/40">
+              <span class="font-bold text-[#253041] block mb-2">แนวทางการปกครองสามเณร:</span>
+              <ul class="space-y-2 list-disc pl-4 text-xs sm:text-sm">
+                <li>การวางระเบียบวินัยและศีลธรรมควบคู่การเป็นกัลยาณมิตร</li>
+                <li>ดูแลและสนับสนุนทุนการขบฉัน การรักษาพยาบาล และอุปกรณ์การศึกษาอย่างรอบด้าน</li>
+                <li>จัดสรรทุนศึกษาสงเคราะห์เพิ่มเติมเพื่อรางวัลในการเรียนรู้ทางธรรมและบาลีอย่างเท่าเทียม</li>
+              </ul>
+            </div>
+            <div class="bg-[#FFF8EE]/60 p-6 rounded-2xl border border-orange-100/40">
+              <span class="font-bold text-[#253041] block mb-2">บทสรุปงานปกครอง (ศึกษาสงเคราะห์):</span>
+              <p class="leading-relaxed">
+                ตั้งแต่ริเริ่มการบริหารกุฏิเณรในปี พ.ศ. 2562 มีสามเณรผ่านระบบการบ่มเพาะและการศึกษาสงเคราะห์ของสำนักเรียนอย่างเป็นระบบรวมแล้วมากกว่า 1,000 รูป สร้างความแข็งแกร่งทางปัญญาและศีลธรรมเพื่อเป็นพุทธศาสนทายาทคนสำคัญของประเทศ
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB Content: National Ordination and Missions -->
+      <div id="exptab-propagation" class="hidden space-y-6 exptab-view">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <h3 class="text-xl font-bold text-[#253041]">งานบรรพชาอุปสมบทระดับชาติ & กิจกรรมเผยแผ่ชุมชน</h3>
+            <p class="text-xs text-gray-400">บทบาทรองหัวหน้ากองประสานงานนาคหลวงประโยค 9 นครหลวง 10 และงานเทศนาธรรม</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <div class="bg-[#FFF8EE] p-6 rounded-2xl border border-orange-50 space-y-3">
+              <span class="font-bold text-[#2e6248] block">โครงการบวชแสนรูป ทั่วไทย</span>
+              <p class="text-xs text-gray-600">รับหน้าที่เป็นพระอาจารย์พี่เลี้ยงและผู้ประสานโครงการหลักสูตรในรุ่นที่ 6-10 ถ่ายทอดระบบวินัยและการฝึกสมาธิเบื้องต้น</p>
+            </div>
+            <div class="bg-[#FFF8EE] p-6 rounded-2xl border border-orange-50 space-y-3">
+              <span class="font-bold text-[#876210] block">ค่ายอบรมเยาวชน บวร.</span>
+              <p class="text-xs text-gray-600">วิทยากรหลักสูตรปฏิบัติธรรมค่ายโรงเรียนและเยาวชนทั่วไทย ภายใต้ความร่วมมือบ้าน วัด โรงเรียน เพื่อปูรากฐานมีศีลธรรม</p>
+            </div>
+            <div class="bg-[#FFF8EE] p-6 rounded-2xl border border-orange-50 space-y-3">
+              <span class="font-bold text-[#1c5375] block">ประสานงานหน่วยงานราชการ</span>
+              <p class="text-xs text-gray-600">ประสานกิจกรรมเทศนาธรรมและพิธีตักบาตรส่งเสริมจริยธรรมข้าราชการสังกัดระดับประเทศ อาทิ **กระทรวงกลาโหม**</p>
+            </div>
+          </div>
+
+          <!-- Tabulated statistics on key days -->
+          <div class="bg-orange-50/50 p-6 rounded-2xl space-y-4">
+            <h4 class="font-bold text-sm text-[#253041]">สถิติผู้เข้าร่วมกิจกรรมเผยแผ่และพิธีกรรมประจำปี (ค่าเฉลี่ยสะสม)</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              <div class="bg-white p-4 rounded-xl shadow-2xs">
+                <span class="text-[10px] text-gray-400 block font-bold">พิธีมาฆบูชา</span>
+                <span class="text-xs font-bold text-gray-700 block mt-1">สงฆ์ 222 รูป / ประชาชน 300 คน</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-2xs">
+                <span class="text-[10px] text-gray-400 block font-bold">พิธีวิสาขบูชา</span>
+                <span class="text-xs font-bold text-gray-700 block mt-1">สงฆ์ 222 รูป / ประชาชน 200 คน</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-2xs">
+                <span class="text-[10px] text-gray-400 block font-bold">พิธีอัฏฐมีบูชา</span>
+                <span class="text-xs font-bold text-gray-700 block mt-1">สงฆ์ 222 รูป / ประชาชน 250 คน</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-2xs">
+                <span class="text-[10px] text-gray-400 block font-bold">พิธีอาชาฬหบูชา</span>
+                <span class="text-xs font-bold text-gray-700 block mt-1">สงฆ์ 222 รูป / ประชาชน 300 คน</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB Content: Construction and General Services -->
+      <div id="exptab-construction" class="hidden space-y-6 exptab-view">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <div class="border-b border-gray-100 pb-4">
+            <h3 class="text-xl font-bold text-[#253041]">งานสาธารณูปการและทำนุบำรุงพระอาราม</h3>
+            <p class="text-xs text-gray-400">การเป็นกรรมการออกแบบและปรับปรุงเสนาสนะเพื่อรองรับกิจกรรมของนักเรียน</p>
+          </div>
+
+          <div class="flex flex-col md:flex-row items-center gap-6">
+            <div class="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden bg-gray-100">
+              <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=600" alt="งานบูรณะพระอาราม" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full md:w-1/2 space-y-4 text-sm text-gray-600">
+              <div class="bg-amber-50 p-5 rounded-2xl border border-amber-100/40">
+                <span class="font-bold text-amber-800 block mb-1">ได้รับการแต่งตั้งเมื่อ พ.ศ. 2566</span>
+                <p>ได้รับมอบหมายแต่งตั้งให้ทำหน้าที่เป็น "กรรมการควบคุมและประสานงานสถาปัตยกรรมก่อสร้างและปฏิสังขรณ์เสนาสนะภายในวัดชัยพฤกษมาลาราชวรวิหาร"</p>
+              </div>
+              <p>
+                ด้วยอัตราของสามเณรและนักเรียนแผนกบาลีที่เพิ่มพูนเติบโตขึ้นทุกปี คณะกรรมการและกองธุรการจึงมีส่วนในการเร่งพัฒนาอาคารเรียนกุฏิสงฆ์ให้คงความปลอดภัย แข็งแรง ทนทาน และมีบรรยากาศเกื้อหนุนการศึกษาค้นคว้าพระวินัยตามพุทธวิถีอย่างเต็มประสิทธิภาพ
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 5. UK MISSION SCOTLAND VIEW -->
+    <div id="view-uk" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-earth-americas text-blue-500"></i> UK Mission: Wat Phra Dhammakaya Scotland
+        </h2>
+        <p class="text-sm text-[#6E7787]">ก้าวสำคัญของการเดินทางไปปฏิบัติศาสนกิจและเผยแผ่พระพุทธศาสนา ณ สหราชอาณาจักร (1 ปีเต็ม)</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+            <h3 class="text-xl font-bold text-[#253041] border-l-4 border-blue-400 pl-3">กรอบและเป้าหมายเชิงสากล</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-600">
+              <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100/30">
+                <span class="font-bold text-[#1c5375] block mb-2">สอนสติสมาธิแก่ชาวท้องถิ่น</span>
+                <p class="text-xs">นำพาสติสงบและการผ่อนคลายวิถีสากลสู่ใจประชากรท้องถิ่น โดยมุ่งเน้นความเป็นมิตรและปราศจากข้อจำกัดด้านความเชื่อ</p>
+              </div>
+
+              <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100/30">
+                <span class="font-bold text-[#1c5375] block mb-2">ศูนย์เชื่อมพุทธบริษัทสากล</span>
+                <p class="text-xs">จัดเตรียมระบบสมาธิ และพุทธพิธีวันสำคัญ เพื่อต้อนรับคนไทยและคนต่างชาติในพื้นที่ห่างไกล ณ สก็อตแลนด์</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-600 leading-relaxed">
+              การเดินทางปฏิบัติศาสนกิจเผยแผ่ธรรมะในสก็อตแลนด์ครั้งนี้ นับเป็นการเดินทางสู่ต่างประเทศเพื่อเป้าหมายเผยแผ่สติเบื้องต้นแก่ผู้คนสากลเป็นครั้งแรก มีกำหนดระยะเวลาในการปฏิบัติภารกิจนาน **1 ปีเต็ม** โดยในห้วงเวลาที่พำนักในสหราชอาณาจักร ได้มีการมอบหมายความรับผิดชอบงานระบบและการดูแลหมู่กุฏิในเมืองไทยแก่ทีมพระสหธรรมิก (พระเพื่อน) คอยควบคุมดูแลแทนเรียบร้อย
+            </p>
+          </div>
+
+          <div class="bg-[#253041] text-white p-8 rounded-3xl space-y-4 shadow-md">
+            <h4 class="font-bold text-[#F6D78B] text-lg">สก็อตแลนด์ ดินแดนแห่งสัจธรรมสงบ</h4>
+            <p class="text-xs text-gray-300">
+              Wat Phra Dhammakaya Scotland ตั้งอยู่ในสิ่งแวดล้อมที่เงียบสัปปายะ เหมาะสมยิ่งแก่การนำจิตใจของคนรอบข้างกลับคืนสู่ความบริสุทธิ์นิ่งสงบภายใน
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2 text-xs">
+              <span class="bg-slate-800 px-3 py-1.5 rounded-full border border-gray-600">1 Year Assignment</span>
+              <span class="bg-slate-800 px-3 py-1.5 rounded-full border border-gray-600">Language: English / Thai</span>
+              <span class="bg-slate-800 px-3 py-1.5 rounded-full border border-gray-600">Focus: Meditation & Mindfulness</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scotland center image -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-3xl border border-orange-50 shadow-sm space-y-4">
+            <h4 class="font-bold text-gray-800">ศูนย์สาขาปฏิบัติธรรมสากล</h4>
+            <div class="rounded-2xl overflow-hidden aspect-square bg-gray-100 shadow-2xs">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=600" alt="Wat Phra Dhammakaya Scotland" class="w-full h-full object-cover">
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-bold text-gray-800">Wat Phra Dhammakaya Scotland</p>
+              <p class="text-[10px] text-gray-400">United Kingdom</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 6. GALLERY & DYNAMIC ALBUM CREATOR VIEW -->
+    <div id="view-gallery" class="hidden space-y-8 page-view">
+      <div class="border-b border-orange-100 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+            <i class="fa-solid fa-images text-emerald-500"></i> แกลเลอรีรูปภาพ & จัดเก็บอัลบั้ม
+          </h2>
+          <p class="text-sm text-[#6E7787]">แยกหมวดหมู่เป็นโฟลเดอร์ และรองรับการอัปโหลดไฟล์ภาพจริงเพื่อเก็บเข้าอัลบั้มที่สร้างใหม่</p>
+        </div>
+
+        <!-- Switch Sub tabs Browse vs Upload -->
+        <div class="flex bg-slate-100 p-1.5 rounded-2xl border border-gray-200/50 self-start sm:self-center">
+          <button onclick="setGallerySubTab('browse')" id="gtab-browse" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#253041] shadow-xs transition-all">
+            <i class="fa-solid fa-table-cells-large"></i> อัลบั้มทั้งหมด
+          </button>
+          <button onclick="setGallerySubTab('upload')" id="gtab-upload" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-[#6E7787] hover:text-[#253041] transition-all">
+            <i class="fa-solid fa-upload"></i> สร้างอัลบั้ม & อัปโหลดรูปจริง
+          </button>
+        </div>
+      </div>
+
+      <!-- BROWSE SUB-TAB CONTAINER -->
+      <div id="subtab-browse-container" class="space-y-8 animate-fade-in">
+        <!-- Folders Selectors Grid (Dynamically Populated) -->
+        <div id="folders-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Filtered Gallery Images grid -->
+        <div id="gallery-images-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- UPLOAD & CREATOR STUDIO SUB-TAB CONTAINER -->
+      <div id="subtab-upload-container" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fade-in">
+        
+        <!-- SECTION 1: CREATE ALBUM FOLDER -->
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <h3 class="font-bold text-lg text-[#253041] border-b border-gray-100 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-folder-plus text-indigo-500"></i> สร้างอัลบั้มภาพใหม่ (Create Folder)
+          </h3>
+
+          <div id="album-status-msg" class="hidden p-4 rounded-xl text-xs font-bold animate-fade-in"></div>
+
+          <form onsubmit="handleCreateAlbum(event)" class="space-y-4 text-xs sm:text-sm">
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1.5">ชื่ออัลบั้มกิจกรรมรูปภาพ *</label>
+              <input type="text" id="new-album-name" required placeholder="เช่น ทริปสวดมนต์เมืองเอดินบะระ, ค่ายเด็กวัดวัยใส" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1.5">รายละเอียดหัวเรื่อง</label>
+              <textarea id="new-album-desc" placeholder="เช่น รายละเอียดโครงการ ภาพรวมกิจกรรมการกุศล หรือประวัติสั้น..." rows="3" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none"></textarea>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-2">เลือกโทนสีสัญลักษณ์โฟลเดอร์</label>
+              <div class="flex space-x-3">
+                <button type="button" onclick="setNewAlbumColor('text-indigo-500', this)" class="color-dot w-7 h-7 rounded-full bg-indigo-500 border-2 border-gray-800 scale-110 shadow-xs"></button>
+                <button type="button" onclick="setNewAlbumColor('text-emerald-500', this)" class="color-dot w-7 h-7 rounded-full bg-emerald-500 border-2 border-transparent"></button>
+                <button type="button" onclick="setNewAlbumColor('text-amber-500', this)" class="color-dot w-7 h-7 rounded-full bg-amber-500 border-2 border-transparent"></button>
+                <button type="button" onclick="setNewAlbumColor('text-blue-500', this)" class="color-dot w-7 h-7 rounded-full bg-blue-500 border-2 border-transparent"></button>
+                <button type="button" onclick="setNewAlbumColor('text-red-500', this)" class="color-dot w-7 h-7 rounded-full bg-red-500 border-2 border-transparent"></button>
+                <button type="button" onclick="setNewAlbumColor('text-purple-500', this)" class="color-dot w-7 h-7 rounded-full bg-purple-500 border-2 border-transparent"></button>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full bg-[#253041] hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm shadow-sm transition">
+              ลงทะเบียนสร้างอัลบั้มใหม่
+            </button>
+          </form>
+        </div>
+
+        <!-- SECTION 2: FILE UPLOAD TO ALBUM -->
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <h3 class="font-bold text-lg text-[#253041] border-b border-gray-100 pb-3 flex items-center gap-2">
+            <i class="fa-solid fa-file-image text-emerald-500"></i> อัปโหลดรูปภาพจริงเข้าสู่อัลบั้ม (Upload Files)
+          </h3>
+
+          <div id="upload-status-msg" class="hidden p-4 rounded-xl text-xs font-bold animate-fade-in"></div>
+
+          <form onsubmit="handleImageUploadSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1.5">เลือกโฟลเดอร์เป้าหมายปลายทาง *</label>
+              <select id="upload-target-album" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <!-- Real File Input with Local Reader base64 conversion -->
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1.5">อัปโหลดไฟล์ภาพจากอุปกรณ์ของคุณ *</label>
+              <div class="border-2 border-dashed border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center text-center bg-slate-50 relative min-h-[140px]">
+                <input type="file" id="upload-file-input" accept="image/*" onchange="previewSelectedFile(event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                <div id="upload-preview-area" class="space-y-2 pointer-events-none">
+                  <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 mb-2"></i>
+                  <p class="text-xs text-gray-500 font-bold">กดที่นี่หรือลากไฟล์ภาพถ่ายเพื่อเลือกอัปโหลด</p>
+                  <p class="text-[9px] text-gray-400">รองรับไฟล์ PNG, JPEG, GIF และไฟล์สากลอื่นๆ</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alternative Online Image Link option -->
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1.5">หรือ วางที่อยู่ลิงก์รูปภาพโดยตรง (Image URL)</label>
+              <input type="text" id="upload-url-input" placeholder="https://images.unsplash.com/photo-..." class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold text-gray-500 block mb-1.5">ชื่อรูปภาพ / หัวข้ออธิบายกิจกรรม *</label>
+                <input type="text" id="upload-img-title" required placeholder="พิมพ์ข้อความสั้นๆ อธิบายรูป" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-500 block mb-1.5">คำอธิบายรายละเอียดเพิ่มเติม</label>
+                <input type="text" id="upload-img-desc" placeholder="พิมพ์รายละเอียด สถานที่ วันเวลา ฯลฯ" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-2 pt-1">
+              <input type="checkbox" id="upload-is-featured" class="w-4 h-4 text-[#253041] rounded focus:ring-0 cursor-pointer">
+              <label htmlFor="upload-is-featured" class="text-xs font-bold text-gray-600 cursor-pointer">
+                ตั้งเป็นภาพแนะนำเด่นในหน้าแรกของเว็บไซต์ (Featured Image)
+              </label>
+            </div>
+
+            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-xs transition">
+              ส่งอัปโหลดและบันทึกเข้าอัลบั้มทันที
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 7. TRENDS AUTO-FEED VIEW -->
+    <div id="view-trends" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-globe text-amber-500"></i> เทคโนโลยี & นวัตกรรมพุทธธรรมกระแสโลก
+        </h2>
+        <p class="text-sm text-[#6E7787]">ระบบ Auto-Feed เฝ้าระวังสแกนข่าวนวัตกรรมการประยุกต์ปฏิบัติธรรมและเทรนด์สุขภาพใจทั่วโลก</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Stream Feed Content -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-lg text-[#253041] flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-red-500"></i> กระแสนวัตกรรมและจริยธรรมสากลที่น่าจับตามอง
+            </h3>
+            <span class="text-xs text-gray-400 animate-pulse">อัปเดตอัจฉริยะอัตโนมัติทุกๆ 15 วินาที</span>
+          </div>
+
+          <div id="trends-feed-list" class="space-y-4">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Sidebar Trend Widget description -->
+        <div class="space-y-6">
+          <div class="bg-[#FFF8EE] p-6 rounded-3xl border border-[#F6D78B]/40 space-y-4">
+            <h4 class="font-bold text-[#876210] text-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> ทำไมเราต้องประมวลกระแส?
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              การก้าวไปรับศาสนกิจ ณ สหราชอาณาจักร วัดพระธรรมกายสก็อตแลนด์ จำเป็นอย่างยิ่งที่จะต้องเข้าใจ "การประยุกต์ด้านเทคโนโลยี" และ "จริยธรรมสากล" ที่คนรุ่นใหม่สนใจ เพื่อนำข้อมูลและเครื่องมือสื่อสารสตรีมมิ่ง สื่อกราฟิก E-Card ไปสร้างแรงบันดาลใจให้สังคมได้อย่างถูกรสนิยมและมีประสิทธิภาพเต็มขั้น
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 8. PUBLIC CONTACT VIEW -->
+    <div id="view-contact" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4">
+        <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+          <i class="fa-solid fa-comment-dots text-coral"></i> ติดต่อสอบถาม & ประสานนิมนต์ศาสนกิจ
+        </h2>
+        <p class="text-sm text-[#6E7787]">ส่งเรื่องนิมนต์ ติดต่องานเทศนาธรรม หรือขอคำขอจัดอบรมค่ายเยาวชนโรงเรียน</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Form Area -->
+        <div class="lg:col-span-2 bg-white p-6 sm:p-10 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <h3 class="text-xl font-bold text-[#253041] mb-4">ส่งข้อความติดต่อกลับ</h3>
+          
+          <div id="contact-success-msg" class="hidden bg-emerald-50 text-emerald-800 p-4 rounded-xl text-xs font-bold border border-emerald-200"></div>
+
+          <form onsubmit="handleContactFormSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold text-gray-500 block mb-1">ชื่อ - นามสกุลผู้ติดต่อ *</label>
+                <input type="text" id="contact-form-name" required placeholder="กรอกชื่อและนามสกุลของคุณ" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-500 block mb-1">อีเมล หรือ ช่องทางติดต่อกลับ *</label>
+                <input type="text" id="contact-form-email" required placeholder="กรอกเบอร์โทรหรือ Email@domain.com" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400">
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1">หัวข้อที่ประสงค์ติดต่อ</label>
+              <input type="text" id="contact-form-subject" placeholder="เช่น ขอขอนิมนต์จัดค่ายอบรม, สื่อสารประสานสมณศักดิ์" class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none">
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-500 block mb-1">รายละเอียดคำอาราธนา / สอบถาม *</label>
+              <textarea id="contact-form-message" required rows="5" placeholder="ระบุเนื้อหาสำคัญหรือวันเวลาที่ประสงค์นิมนต์ศาสนกิจ..." class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+            </div>
+
+            <button type="submit" class="w-full theme-accent-bg hover:scale-[1.01] transition-all text-[#253041] font-bold py-3.5 rounded-xl shadow-xs">
+              ส่งข้อความบันทึกข้อมูลเข้าฐานระบบ
+            </button>
+          </form>
+        </div>
+
+        <!-- Sidebar Public Strips -->
+        <div class="space-y-6">
+          <div class="bg-[#253041] text-white p-8 rounded-3xl space-y-6 shadow-md">
+            <h4 class="font-bold text-[#F6D78B] text-lg">ช่องทางการสื่อสารสาธารณะ</h4>
+            
+            <div class="space-y-4 text-xs sm:text-sm">
+              <div class="flex items-start space-x-3">
+                <i class="fa-solid fa-phone text-[#FFF8EE] mt-1 text-base"></i>
+                <div>
+                  <span class="text-[10px] text-gray-400 block">สายตรงโทรศัพท์</span>
+                  <span class="font-bold block text-gray-100">088-166-9195</span>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3">
+                <i class="fa-solid fa-envelope text-[#FFF8EE] mt-1 text-base"></i>
+                <div>
+                  <span class="text-[10px] text-gray-400 block">อีเมลติดต่อกลับ</span>
+                  <span class="font-bold block text-gray-100">fanislike@gmail.com</span>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3">
+                <i class="fa-brands fa-line text-[#FFF8EE] mt-1 text-base"></i>
+                <div>
+                  <span class="text-[10px] text-gray-400 block">Line ID</span>
+                  <span class="font-bold block text-gray-100">Anon_monk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#FFF8EE] p-6 rounded-3xl border border-[#F6D78B]/30 text-xs text-gray-400 leading-relaxed">
+            *เพื่อปกป้องข้อมูลส่วนบุคคลอย่างรอบคอบ ข้อมูลด้านบัตรประชาชนและรายละเอียดข้อมูลเปราะบางทางเอกสาร ได้ถูกจัดเก็บไว้เบื้องหลังอย่างรัดกุมสูงสุดตามมาตราฐาน
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 9. ADMIN PANEL VIEW (Authenticated) -->
+    <div id="view-admin" class="hidden space-y-12 page-view">
+      <div class="border-b border-orange-100 pb-4 flex justify-between items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-[#253041] flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-red-500"></i> แผงควบคุมระบบ (Admin Panel)
+          </h2>
+          <p class="text-sm text-[#6E7787]">ระบบความปลอดภัยและจัดการฐานข้อมูลจำลอง (Simulated Database)</p>
+        </div>
+        <button id="logout-btn" onclick="handleAdminLogout()" class="hidden bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> ออกจากระบบหลังบ้าน
+        </button>
+      </div>
+
+      <!-- NOT LOGGED IN LOGIN CARD -->
+      <div id="admin-login-card" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-orange-50 shadow-md text-center space-y-6">
+        <div class="w-16 h-16 rounded-full bg-red-50 text-red-500 flex items-center justify-center mx-auto">
+          <i class="fa-solid fa-lock text-2xl"></i>
+        </div>
+
+        <div class="space-y-1">
+          <h3 class="font-bold text-lg text-[#253041]">เข้าสู่ระบบควบคุมความปลอดภัย</h3>
+          <p class="text-xs text-gray-400">กรุณากรอกรหัสผ่านเพื่อสืบค้นกล่องข้อความผู้ติดต่อภายนอก</p>
+        </div>
+
+        <div id="login-error-msg" class="hidden text-xs text-red-500 font-bold bg-red-50 py-2 rounded-lg border border-red-100"></div>
+
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-left">
+          <div>
+            <label class="text-xs font-bold text-gray-500 block mb-1">รหัสผ่านแอดมินจำลอง *</label>
+            <input type="password" id="admin-password-input" placeholder="พิมพ์ธรรมะสาธิต: dhamma123" required class="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-center text-sm focus:outline-none focus:ring-2 focus:ring-red-400">
+          </div>
+          <button type="submit" class="w-full bg-[#253041] hover:bg-[#1a2330] text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm shadow-sm transition">
+            เข้าใช้งานระบบหลังบ้าน
+          </button>
+        </form>
+      </div>
+
+      <!-- AUTHENTICATED ADMINISTRATIVE PANELS -->
+      <div id="admin-authed-panel" class="hidden space-y-8">
+        
+        <!-- Stats overview -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs">
+            <span class="text-xs text-gray-400 block font-bold mb-1">จำนวนรูปภาพรวม</span>
+            <span id="admin-stat-img-count" class="text-3xl font-bold font-comfortaa text-[#253041]">6 ภาพ</span>
+          </div>
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs">
+            <span class="text-xs text-gray-400 block font-bold mb-1">โฟลเดอร์แกลเลอรีในระบบ</span>
+            <span id="admin-stat-folder-count" class="text-3xl font-bold font-comfortaa text-[#253041]">4 อัลบั้ม</span>
+          </div>
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-xs">
+            <span class="text-xs text-gray-400 block font-bold mb-1">ข้อความผู้ติดต่อนิมนต์</span>
+            <span id="admin-stat-msg-count" class="text-3xl font-bold font-comfortaa text-emerald-600">1 ฉบับ</span>
+          </div>
+        </div>
+
+        <!-- Messages list mailbox received -->
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-6">
+          <h3 class="text-lg font-bold text-[#253041] flex items-center gap-2 border-b border-gray-100 pb-3">
+            <i class="fa-solid fa-envelope-open-text text-coral"></i> กล่องข้อความผู้ติดต่อออนไลน์ (Simulated DB Table)
+          </h3>
+
+          <div id="admin-mailbox-list" class="space-y-4">
+            <!-- Populated via Javascript -->
+          </div>
+        </div>
+
+        <!-- Add custom trend input -->
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-orange-50 shadow-sm space-y-4">
+          <h3 class="font-bold text-gray-800">เพิ่มกระแสเทคโนโลยีพุทธธรรมใน Auto-Feed Ticker</h3>
+          <form onsubmit="handleAddNewTrendSubmit(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <input type="text" id="new-trend-title" required placeholder="หัวข้อข่าวเทรนด์เด่น" class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-3">
+            <input type="text" id="new-trend-cat" placeholder="หมวดหมู่ข่าวสาร เช่น Tech, Environment" class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-3">
+            <input type="text" id="new-trend-desc" required placeholder="พิมพ์ข้อความรายละเอียดเพื่อวิ่งบนหน้าแถบข่าว..." class="bg-slate-50 border border-gray-200 rounded-xl px-4 py-3">
+            <button type="submit" class="sm:col-span-3 bg-slate-800 text-white font-bold py-3.5 rounded-xl hover:bg-slate-950 transition">
+              บันทึกกระแสข่าวสารเข้าระบบ Auto-Feed
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#253041] text-white py-12 border-t border-gray-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+        <div>
+          <span class="font-bold text-lg text-[#F6D78B] block mb-1" id="footer-owner-title">พระปลัดอานนท์ อติภทฺโท (สุรสรณ์)</span>
+          <p class="text-xs text-gray-400" id="footer-owner-subtitle">เลขานุการสำนักเรียนวัดชัยพฤกษมาลา และผู้ช่วยเลขานุการเจ้าคณะเขตตลิ่งชัน</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-300">
+          <button onclick="navigateTo('home')" class="hover:text-white transition">หน้าแรก</button>
+          <button onclick="navigateTo('profile')" class="hover:text-white transition">ประวัติส่วนตัว</button>
+          <button onclick="navigateTo('experience')" class="hover:text-white transition">ผลงาน & สถิติ</button>
+          <button onclick="navigateTo('uk')" class="hover:text-white transition">ภารกิจ Scotland</button>
+          <button onclick="navigateTo('admin')" class="hover:text-white transition">ผู้ดูแลระบบ</button>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500">
+        <p>© <span id="footer-year">2026</span> พระปลัดอานนท์ อติภทฺโท Portfolio. สงวนลิขสิทธิ์ข้อมูลทั้งหมดตามมาตรฐานพระวินัย</p>
+        <p>พัฒนาขึ้นตามมาตรฐาน Responsive Figma Blueprint</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== CORE APP JAVASCRIPT STATE ENGINE ==================== -->
+  <script>
+    // 1. STATE & STATIC DICTIONARIES
+    let currentLang = 'TH';
+    let currentTheme = 'mint';
+    let currentActivePage = 'home';
+    let isMobileMenuOpenStatus = false;
+    let currentExpTab = 'education';
+    let currentGallerySubTab = 'browse';
+    let currentActiveFolderFilter = 'all';
+    let isAuthorizedAdmin = false;
+    let tempAlbumColorSelected = 'text-indigo-500';
+
+    // Set dynamic footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    // Dynamically calculate Age and Vassa based on 2026 / current year
+    const birthYear = 1989;
+    const ordYear = 2012;
+    const targetCalcYear = 2026; // Static representation of the desired year 2569 as requested, but handles system date smoothly
+    const computedAgeValue = targetCalcYear - birthYear; // 37
+    const computedVassaValue = targetCalcYear - ordYear; // 14
+
+    document.getElementById('stat-age').textContent = computedAgeValue;
+    document.getElementById('stat-vassa').textContent = computedVassaValue;
+
+    // Static translations
+    const TRANSLATIONS_DICT = {
+      TH: {
+        headerTitle: "พระปลัดอานนท์ อติภทฺโท",
+        headerSurname: "(สุรสรณ์)",
+        headerSubtitle: "พระนักบริหาร และการเผยแผ่พระพุทธศาสนาระดับสากล",
+        "quickStats.vassa": "พรรษา",
+        "quickStats.age": "อายุ (ปี)",
+        "quickStats.mission": "ภารกิจปัจจุบัน",
+        "highlights.title": "ผลงานเชิงประจักษ์เด่น",
+        "highlights.card1Title": "งานปกครอง & การศึกษา",
+        "highlights.card1Desc": "ดูแลและบริหารจัดการสามเณรสะสมรวมมากกว่า 1,000 รูป",
+        "highlights.card2Title": "งานวิชาการสอบไล่",
+        "highlights.card2Desc": "ขับเคลื่อนสถิติผู้สอบผ่านนักธรรมและบาลีกว่า 1,500 รูป/คน",
+        "highlights.card3Title": "นวัตกรรม & สื่อสร้างสรรค์",
+        "highlights.card3Desc": "ผู้ผลิตสื่อกราฟิก E-Card และวิทยากรอบรมเยาวชนทั่วประเทศ",
+        "menu.home": "หน้าแรก",
+        "menu.profile": "ประวัติส่วนตัว",
+        "menu.education": "การศึกษา & อบรม",
+        "menu.experience": "ผลงาน & สถิติ",
+        "menu.uk": "ภารกิจ Scotland",
+        "menu.gallery": "แกลเลอรีรูปภาพ",
+        "menu.trends": "เทรนด์โลก",
+        "menu.contact": "ติดต่อสอบถาม",
+        "menu.admin": "ผู้ดูแลระบบ"
+      },
+      EN: {
+        headerTitle: "Phra Palat Anon Atiphattho",
+        headerSurname: "(Surasorn)",
+        headerSubtitle: "Buddhist Administrative Monk & Global Dhamma Propagation",
+        "quickStats.vassa": "Vassa (Monkhood)",
+        "quickStats.age": "Age (Years)",
+        "quickStats.mission": "Current Mission",
+        "highlights.title": "Outstanding Achievements",
+        "highlights.card1Title": "Governance & Study",
+        "highlights.card1Desc": "Managed and cared for a cumulative total of over 1,000 novices",
+        "highlights.card2Title": "Academic Exam Passes",
+        "highlights.card2Desc": "Driven academic exam passes for over 1,500 monks and novices in the network",
+        "highlights.card3Title": "Innovation & Media",
+        "highlights.card3Desc": "Creator of digital E-Card media and youth trainer nationwide",
+        "menu.home": "Home",
+        "menu.profile": "Biography",
+        "menu.education": "Education & Training",
+        "menu.experience": "Dashboard & Stats",
+        "menu.uk": "Scotland Mission",
+        "menu.gallery": "Gallery",
+        "menu.trends": "Global Trends",
+        "menu.contact": "Contact",
+        "menu.admin": "Admin Control"
+      },
+      ID: {
+        headerTitle: "Phra Palat Anon Atiphattho",
+        headerSurname: "(Surasorn)",
+        headerSubtitle: "Bhiksu Administrasi Buddha & Penyebaran Dhamma Global",
+        "quickStats.vassa": "Vassa (Masa Bhiksu)",
+        "quickStats.age": "Usia (Tahun)",
+        "quickStats.mission": "Misi Saat Ini",
+        "highlights.title": "Pencapaian Kunci Utama",
+        "highlights.card1Title": "Pemerintahan & Pendidikan",
+        "highlights.card1Desc": "Mengelola dan membina lebih dari 1,000 samanera secara kumulatif",
+        "highlights.card2Title": "Keberhasilan Akademik",
+        "highlights.card2Desc": "Mendorong kelulusan ujian akademik bagi lebih dari 1,500 bhiksu dan samanera",
+        "highlights.card3Title": "Inovasi & Media Kreatif",
+        "highlights.card3Desc": "Pencipta media digital E-Card dan pelatih kepemudaan nasional",
+        "menu.home": "Beranda",
+        "menu.profile": "Biografi",
+        "menu.education": "Pendidikan & Pelatihan",
+        "menu.experience": "Dashboard & Statistik",
+        "menu.uk": "Misi Scotland",
+        "menu.gallery": "Galeri Foto",
+        "menu.trends": "Tren Global",
+        "menu.contact": "Hubungi Kami",
+        "menu.admin": "Admin"
+      }
+    };
+
+    // Static Roles lists per language
+    const ROLES_LISTS = {
+      TH: [
+        "รองหัวหน้าโครงการเตรียมบาลีนาคหลวงประโยค 9 กอง นครหลวง 10 สำนักกัลยาณมิตรสากล",
+        "เลขานุการสำนักเรียนวัดชัยพฤกษมาลา",
+        "ผู้ช่วยเลขานุการเจ้าคณะเขตตลิ่งชัน"
+      ],
+      EN: [
+        "Deputy Head of the Preparation Project for Pali Nak Luang Grade 9, Group 10",
+        "Secretary of Wat Chaiyaphrueksamala Ecclesiastical School",
+        "Assistant Secretary to the Chao Khana (Head Monk) of Taling Chan District"
+      ],
+      ID: [
+        "Wakil Ketua Proyek Persiapan Pali Nak Luang Tingkat 9, Divisi 10",
+        "Sekretaris Sekolah Agama Wat Chaiyaphrueksamala",
+        "Asisten Sekretaris Chao Khana (Kepala Bhiksu) Distrik Taling Chan"
+      ]
+    };
+
+    // Experience statistics records
+    const EXPERIENCE_STATS_DATA = {
+      "2565": [
+        { class: "น.ธ. ตรี (แผนกธรรม/สงฆ์)", enrolled: "131 รูป", passed: "85 รูป", failed: "46 รูป", success: "64.8%" },
+        { class: "น.ธ. โท (แผนกธรรม/สงฆ์)", enrolled: "33 รูป", passed: "25 รูป", failed: "8 รูป", success: "75.7%" },
+        { class: "น.ธ. เอก (แผนกธรรม/สงฆ์)", enrolled: "5 รูป", passed: "4 รูป", failed: "1 รูป", success: "80.0%" },
+        { class: "ธ.ศ. ตรี (ธรรมศึกษา/ฆราวาส)", enrolled: "550 คน", passed: "313 คน", failed: "237 คน", success: "56.9%" },
+        { class: "ธ.ศ. โท (ธรรมศึกษา/ฆราวาส)", enrolled: "148 คน", passed: "32 คน", failed: "116 คน", success: "21.6%" },
+        { class: "ธ.ศ. เอก (ธรรมศึกษา/ฆราวาส)", enrolled: "94 คน", passed: "13 คน", failed: "81 คน", success: "13.8%" },
+        { class: "บาลีประโยค ๑-๒", enrolled: "63 รูป", passed: "2 รูป", failed: "61 รูป", success: "3.1%" },
+        { class: "ป.ธ. ๓ (แผนกบาลี)", enrolled: "7 รูป", passed: "4 รูป", failed: "3 รูป", success: "57.1%" }
+      ],
+      "2564": [
+        { class: "น.ธ. ตรี (แผนกธรรม/สงฆ์)", enrolled: "87 รูป", passed: "43 รูป", failed: "44 รูป", success: "49.4%" },
+        { class: "น.ธ. โท (แผนกธรรม/สงฆ์)", enrolled: "15 รูป", passed: "9 รูป", failed: "6 รูป", success: "60.0%" },
+        { class: "น.ธ. เอก (แผนกธรรม/สงฆ์)", enrolled: "2 รูป", passed: "1 รูป", failed: "1 รูป", success: "50.0%" },
+        { class: "ธ.ศ. ตรี (ธรรมศึกษา)", enrolled: "งดจัดสอบ (โควิด)", passed: "-", failed: "-", success: "0%" },
+        { class: "บาลีประโยค ๑-๒", enrolled: "56 รูป", passed: "15 รูป", failed: "41 รูป", success: "26.7%" },
+        { class: "ป.ธ. ๓", enrolled: "1 รูป", passed: "0 รูป", failed: "1 รูป", success: "0%" }
+      ],
+      "2566": [
+        { class: "น.ธ. ตรี (แผนกธรรม/สงฆ์)", enrolled: "131 รูป", passed: "85 รูป", failed: "46 รูป", success: "64.8%" },
+        { class: "น.ธ. โท (แผนกธรรม/สงฆ์)", enrolled: "33 รูป", passed: "25 รูป", failed: "8 รูป", success: "75.7%" },
+        { class: "น.ธ. เอก (แผนกธรรม/สงฆ์)", enrolled: "5 รูป", passed: "4 รูป", failed: "1 รูป", success: "80.0%" },
+        { class: "ธ.ศ. ตรี (ธรรมศึกษา)", enrolled: "550 คน", passed: "313 คน", failed: "237 คน", success: "56.9%" },
+        { class: "ธ.ศ. โท (ธรรมศึกษา)", enrolled: "148 คน", passed: "32 คน", failed: "116 คน", success: "21.6%" },
+        { class: "บาลีประโยค ๑-๒", enrolled: "63 รูป", passed: "2 รูป", failed: "61 รูป", success: "3.1%" },
+        { class: "ป.ธ. ๓", enrolled: "7 รูป", passed: "4 รูป", failed: "3 รูป", success: "57.1%" }
+      ]
+    };
+
+    // Image gallery default store
+    let galleryItems = [
+      { id: 1, title: 'พิธีมอบทุนสามเณรเรียนบาลี', desc: 'มอบรางวัลเพื่อสร้างขวัญกำลังใจให้ผู้เรียนธรรมและบาลี ณ วัดชัยพฤกษมาลา', category: 'ordination', featured: true, image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=600' },
+      { id: 2, title: 'ค่ายอบรมเยาวชนวัยใส', desc: 'ปลูกฝังศีลธรรมและฝึกสมาธิเบื้องต้นแก่เด็กนักเรียนเครือข่ายบวร', category: 'training', featured: true, image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=600' },
+      { id: 3, title: 'ปฏิบัติธรรมวันมาฆบูชา', desc: 'พิธีเวียนเทียนและเจริญพระพุทธมนต์ ร่วมใจพุทธศาสนิกชนท้องถิ่น', category: 'mission-scotland', featured: true, image: 'https://images.unsplash.com/photo-1509021436665-8f37df706533?auto=format&fit=crop&q=80&w=600' },
+      { id: 4, title: 'E-Card ส่งความสุขปีใหม่ธรรมะ', desc: 'การ์ดอวยพรอิเล็กทรอนิกส์สื่อธรรมสร้างสรรค์เผยแพร่สังคมออนไลน์', category: 'ecards', featured: false, image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=600' },
+      { id: 5, title: 'ทัศนียภาพวัดพระธรรมกายสกอตแลนด์', desc: 'Wat Phra Dhammakaya Scotland แหล่งเรียนรู้สมาธิของชาวต่างชาติ', category: 'mission-scotland', featured: true, image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=600' },
+      { id: 6, title: 'อบรมพระนวกะรุ่นบ่มเพาะศาสนทายาท', desc: 'ฝึกเตรียมตัวเจ้าอาวาสและการก้าวสู่พระนักเผยแผ่สากล', category: 'training', featured: false, image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=600' }
+    ];
+
+    // Folders list allowing dynamic creations
+    let foldersList = [
+      { id: 'all', title: 'ทุกอัลบั้มรวม', icon: 'all', color: 'text-gray-600' },
+      { id: 'training', title: 'กิจกรรมค่ายเยาวชน', icon: 'training', color: 'text-indigo-500' },
+      { id: 'ordination', title: 'งานบรรพชา/กุฏิเณร', icon: 'ordination', color: 'text-emerald-500' },
+      { id: 'ecards', title: 'E-card และสื่อภาพ', icon: 'ecards', color: 'text-amber-500' },
+      { id: 'mission-scotland', title: 'ภารกิจ Scotland', icon: 'scotland', color: 'text-blue-500' }
+    ];
+
+    // Simulated Auto Feed trends list
+    let trendsList = [
+      { id: 1, title: 'VR Meditation on the Rise', category: 'Tech & Dharma', desc: 'เทคโนโลยีความจริงเสมือน (VR) กำลังกลายเป็นเครื่องมือช่วยให้คนรุ่นใหม่เข้าถึงสติได้สงบเร็วขึ้นในสถานที่สาธารณะ', source: 'Global Tech Mind' },
+      { id: 2, title: 'AI Ethics in Spiritual Schools', category: 'Education', desc: 'สำนักเรียนต่างประเทศเริ่มนำเอา AI มาร่วมออกแบบคู่มือจริยธรรมดิจิทัลให้เยาวชนใช้ชีวิตอย่างมีความสุขและมีสติรู้เท่าทันสื่อ', source: 'Future of Education' },
+      { id: 3, title: 'Green Temple Campaign in UK', category: 'Environment', desc: 'วัดพระธรรมกายสกอตแลนด์ร่วมขับเคลื่อนโครงการลดคาร์บอนและประหยัดพลังงานในชุมชนชาวพุทธ', source: 'Eco-Buddhism' }
+    ];
+
+    // Contact Mail simulated database
+    let messageDatabase = [
+      {
+        id: 1,
+        name: "นายสมชาย ใจดี",
+        contact: "somchai@email.com",
+        subject: "ขอความอนุเคราะห์จัดอบรมเยาวชนโรงเรียนวัดธรรมิกาวาส",
+        message: "ต้องการกราบอาราธนาพระอาจารย์ไปเป็นวิทยากรอบรมค่ายศีลธรรมในช่วงเดือนสิงหาคมนี้ครับเพื่อเสริมความดีให้กับเด็กๆ",
+        date: "10 มิ.ย. 2026"
+      }
+    ];
+
+    // Themes class structures helper
+    const THEME_STYLES = {
+      mint: { primary: '#BEE7D3', text: '#2e6248', hover: '#a6dcbf', ring: 'rgba(190, 231, 211, 0.4)' },
+      saffron: { primary: '#F6D78B', text: '#876210', hover: '#f3cb69', ring: 'rgba(246, 215, 139, 0.4)' },
+      sky: { primary: '#B8DDF2', text: '#1c5375', hover: '#97cfef', ring: 'rgba(184, 221, 242, 0.4)' },
+      lavender: { primary: '#D9CDF7', text: '#4e388c', hover: '#c2b0f1', ring: 'rgba(217, 205, 247, 0.4)' }
+    };
+
+    // 2. CORE RENDERING ENGINE & ACTIONS
+
+    window.onload = function() {
+      // Set current Theme
+      changeTheme('mint');
+      // Set current Language
+      changeLanguage('TH');
+      // Populate Hero listed roles
+      renderRoles();
+      // Populate Recent Images on Home
+      renderHomeImages();
+      // Render stats table on load
+      updateStatsYear('2565');
+      // Render news autofeed list
+      renderNewsAutofeed();
+      // Render Global News Ticker marquee
+      renderNewsTicker();
+    };
+
+    // Navigate smoothly across views
+    function navigateTo(pageId) {
+      currentActivePage = pageId;
+
+      // Toggle views
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.add('hidden');
+      });
+      document.getElementById(`view-${pageId}`).classList.remove('hidden');
+
+      // Update Navigation styling active indicators (Desktop)
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.className = "px-3.5 py-2 rounded-full text-xs xl:text-sm font-semibold transition-all text-[#6E7787] hover:text-[#253041] hover:bg-orange-50/50";
+      });
+      const activeNavBtn = document.getElementById(`nav-${pageId}`);
+      if (activeNavBtn) {
+        activeNavBtn.className = "px-3.5 py-2 rounded-full text-xs xl:text-sm font-bold transition-all theme-accent-bg text-[#253041] shadow-xs";
+      }
+
+      // Update Mobile Horizontal Scroll bar styling active
+      document.querySelectorAll('[id^="mobnav-"]').forEach(btn => {
+        btn.className = "px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all text-[#6E7787]";
+      });
+      const activeMobBtn = document.getElementById(`mobnav-${pageId}`);
+      if (activeMobBtn) {
+        activeMobBtn.className = "px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all theme-accent-bg text-[#253041] shadow-xs";
+      }
+
+      // Specific view render setups on entering
+      if (pageId === 'gallery') {
+        renderFoldersGrid();
+        renderGalleryGrid();
+        renderFolderSelectorInForm();
+      } else if (pageId === 'admin') {
+        renderAdminDashboard();
+      }
+
+      // Close mobile drawer if active
+      document.getElementById('mobile-drawer').classList.add('hidden');
+      isMobileMenuOpenStatus = false;
+
+      // Scroll window to top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toggle mobile menu drawer overlay
+    function toggleMobileMenu() {
+      isMobileMenuOpenStatus = !isMobileMenuOpenStatus;
+      const drawer = document.getElementById('mobile-drawer');
+      if (isMobileMenuOpenStatus) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    // Change global theme color dynamically
+    function changeTheme(themeKey) {
+      currentTheme = themeKey;
+      const targetTheme = THEME_STYLES[themeKey];
+      
+      // Update Root styling variables
+      document.documentElement.style.setProperty('--theme-primary', targetTheme.primary);
+      document.documentElement.style.setProperty('--theme-text', targetTheme.text);
+      document.documentElement.style.setProperty('--theme-hover', targetTheme.hover);
+      document.documentElement.style.setProperty('--theme-ring', targetTheme.ring);
+
+      // Active styling updates on Switched buttons (Desktop)
+      document.querySelectorAll('[id^="theme-"][id$="-btn"]').forEach(btn => {
+        btn.className = btn.className.replace('border-gray-700 scale-110 shadow-xs', 'border-transparent').replace('hover:scale-105', '');
+        btn.classList.add('hover:scale-105');
+      });
+      const activeThemeBtn = document.getElementById(`theme-${themeKey}-btn`);
+      if (activeThemeBtn) {
+        activeThemeBtn.className = activeThemeBtn.className.replace('border-transparent', 'border-gray-700 scale-110 shadow-xs');
+      }
+    }
+
+    // Switch active Language state
+    function changeLanguage(langKey) {
+      currentLang = langKey;
+
+      // Update languages pickers styles active indicators
+      document.querySelectorAll('[id^="lang-"]').forEach(btn => {
+        btn.className = "w-8 h-8 rounded-full text-xs font-bold transition-all text-[#6E7787] hover:text-[#253041]";
+      });
+      document.getElementById(`lang-${langKey}`).className = "w-8 h-8 rounded-full text-xs font-bold transition-all theme-accent-bg text-[#253041]";
+
+      // Core Dictionary translation lookup replacing [data-t] elements
+      const dictionary = TRANSLATIONS_DICT[langKey];
+      document.querySelectorAll('[data-t]').forEach(el => {
+        const transKey = el.getAttribute('data-t');
+        if (dictionary[transKey]) {
+          el.textContent = dictionary[transKey];
+        }
+      });
+
+      // Header translations
+      document.getElementById('header-title').textContent = dictionary.headerTitle;
+      document.getElementById('header-surname').textContent = dictionary.headerSurname;
+      document.getElementById('header-subtitle').textContent = dictionary.headerSubtitle;
+
+      // Footer text update
+      document.getElementById('footer-owner-title').textContent = dictionary.headerTitle + " " + dictionary.headerSurname;
+      document.getElementById('footer-owner-subtitle').textContent = "เลขานุการสำนักเรียนวัดชัยพฤกษมาลา และผู้ช่วยเลขานุการเจ้าคณะเขตตลิ่งชัน";
+
+      // Translate desktop/tablet Top Navbar items
+      document.getElementById('nav-home').textContent = dictionary["menu.home"];
+      document.getElementById('nav-profile').textContent = dictionary["menu.profile"];
+      document.getElementById('nav-education').textContent = dictionary["menu.education"];
+      document.getElementById('nav-experience').textContent = dictionary["menu.experience"];
+      document.getElementById('nav-uk').textContent = dictionary["menu.uk"];
+      document.getElementById('nav-gallery').textContent = dictionary["menu.gallery"];
+      document.getElementById('nav-trends').textContent = dictionary["menu.trends"];
+      document.getElementById('nav-contact').textContent = dictionary["menu.contact"];
+      document.getElementById('nav-admin').textContent = dictionary["menu.admin"];
+
+      // Translate mobile horizontal scroll bar items
+      document.getElementById('mobnav-home').textContent = dictionary["menu.home"];
+      document.getElementById('mobnav-profile').textContent = dictionary["menu.profile"];
+      document.getElementById('mobnav-education').textContent = dictionary["menu.education"];
+      document.getElementById('mobnav-experience').textContent = dictionary["menu.experience"];
+      document.getElementById('mobnav-uk').textContent = dictionary["menu.uk"];
+      document.getElementById('mobnav-gallery').textContent = dictionary["menu.gallery"];
+      document.getElementById('mobnav-trends').textContent = dictionary["menu.trends"];
+      document.getElementById('mobnav-contact').textContent = dictionary["menu.contact"];
+      document.getElementById('mobnav-admin').textContent = dictionary["menu.admin"];
+
+      // Update Hero roles
+      renderRoles();
+    }
+
+    // Render roles lists
+    function renderRoles() {
+      const rolesContainer = document.getElementById('hero-roles-list');
+      rolesContainer.innerHTML = '';
+      const list = ROLES_LISTS[currentLang];
+      list.forEach(role => {
+        const row = document.createElement('div');
+        row.className = "flex items-start justify-center lg:justify-start space-x-3 text-sm sm:text-base text-[#6E7787]";
+        row.innerHTML = `
+          <i class="fa-solid fa-circle-check theme-accent-text mt-1 flex-shrink-0"></i>
+          <span class="text-left font-semibold">${role}</span>
+        `;
+        rolesContainer.appendChild(row);
+      });
+    }
+
+    // Populate recent featured images on Home page
+    function renderHomeImages() {
+      const container = document.getElementById('gallery-home-grid');
+      container.innerHTML = '';
+      const featured = galleryItems.filter(item => item.featured).slice(0, 4);
+      featured.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "group cursor-pointer";
+        card.onclick = () => navigateTo('gallery');
+        card.innerHTML = `
+          <div class="relative rounded-2xl overflow-hidden aspect-video mb-3 shadow-xs bg-gray-100">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          </div>
+          <h4 class="font-bold text-sm text-[#253041] group-hover:text-amber-800 transition truncate">${item.title}</h4>
+          <p class="text-xs text-[#6E7787] line-clamp-2 mt-1">${item.desc}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Update statistics tab on Experience page
+    function setExpTab(tabKey) {
+      currentExpTab = tabKey;
+      
+      // Update Tab styling buttons
+      document.querySelectorAll('[id^="tabbtn-"]').forEach(btn => {
+        btn.className = "py-3 px-6 text-sm font-semibold border-b-2 border-transparent text-gray-400 hover:text-[#253041]";
+      });
+      document.getElementById(`tabbtn-${tabKey}`).className = "py-3 px-6 text-sm font-bold border-b-2 border-[#253041] text-[#253041]";
+
+      // Toggle panels
+      document.querySelectorAll('.exptab-view').forEach(view => {
+        view.classList.add('hidden');
+      });
+      document.getElementById(`exptab-${tabKey}`).classList.remove('hidden');
+    }
+
+    // Update Ecclesiastical statistics year
+    function updateStatsYear(year) {
+      const records = EXPERIENCE_STATS_DATA[year];
+      const tbody = document.getElementById('stats-table-body');
+      tbody.innerHTML = '';
+
+      if (!records) return;
+
+      records.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.className = "border-b border-gray-50 text-xs sm:text-sm text-gray-600 hover:bg-slate-50/50";
+        tr.innerHTML = `
+          <td class="px-6 py-4 font-bold text-gray-800">${row.class}</td>
+          <td class="px-6 py-4">${row.enrolled}</td>
+          <td class="px-6 py-4 text-emerald-700 font-bold">${row.passed}</td>
+          <td class="px-6 py-4 text-red-500">${row.failed}</td>
+          <td class="px-6 py-4 text-indigo-950 font-bold">${row.success}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Update Progress summaries dynamic metrics based on stats year selected
+      if (year === '2564') {
+        document.getElementById('stat-result-dhamma').textContent = "สอบผ่าน 53 / 104 รูป";
+        document.getElementById('stat-bar-dhamma').style.width = "50.9%";
+        document.getElementById('stat-percent-dhamma').textContent = "อัตราสอบผ่าน 50.9%";
+
+        document.getElementById('stat-result-dhamma-edu').textContent = "งดจัดสอบ (โควิด-19)";
+        document.getElementById('stat-bar-dhamma-edu').style.width = "0%";
+        document.getElementById('stat-percent-dhamma-edu').textContent = "อัตราสอบผ่าน 0%";
+
+        document.getElementById('stat-result-pali').textContent = "สอบผ่าน 15 / 65 รูป";
+        document.getElementById('stat-bar-pali').style.width = "23%";
+        document.getElementById('stat-percent-pali').textContent = "อัตราสอบผ่าน 23.0%";
+      } else {
+        // Standard stats representing 2565 and 2566
+        document.getElementById('stat-result-dhamma').textContent = "สอบผ่าน 114 / 169 รูป";
+        document.getElementById('stat-bar-dhamma').style.width = "67.4%";
+        document.getElementById('stat-percent-dhamma').textContent = "อัตราสอบผ่าน 67.4%";
+
+        document.getElementById('stat-result-dhamma-edu').textContent = "สอบผ่าน 358 / 792 คน";
+        document.getElementById('stat-bar-dhamma-edu').style.width = "45.1%";
+        document.getElementById('stat-percent-dhamma-edu').textContent = "อัตราสอบผ่าน 45.1%";
+
+        document.getElementById('stat-result-pali').textContent = "สอบผ่าน 6 / 145 รูป";
+        document.getElementById('stat-bar-pali').style.width = "4.1%";
+        document.getElementById('stat-percent-pali').textContent = "อัตราสอบผ่าน 4.1%";
+      }
+    }
+
+    // Toggle sub-tab on Gallery: Browse albums vs Creator Studio Uploader
+    function setGallerySubTab(tabKey) {
+      currentGallerySubTab = tabKey;
+
+      // Update Subtabs button styling
+      document.querySelectorAll('[id^="gtab-"]').forEach(btn => {
+        btn.className = "flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-[#6E7787] hover:text-[#253041] transition-all";
+      });
+      document.getElementById(`gtab-${tabKey}`).className = "flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#253041] shadow-xs transition-all";
+
+      // Toggle views
+      if (tabKey === 'browse') {
+        document.getElementById('subtab-browse-container').classList.remove('hidden');
+        document.getElementById('subtab-upload-container').classList.add('hidden');
+        renderFoldersGrid();
+        renderGalleryGrid();
+      } else {
+        document.getElementById('subtab-browse-container').classList.add('hidden');
+        document.getElementById('subtab-upload-container').classList.remove('hidden');
+        renderFolderSelectorInForm();
+      }
+    }
+
+    // Render Folder selector grid (Browse sub-tab)
+    function renderFoldersGrid() {
+      const container = document.getElementById('folders-grid');
+      container.innerHTML = '';
+
+      foldersList.forEach(folder => {
+        // Compute item count for folder
+        let count = 0;
+        if (folder.id === 'all') {
+          count = galleryItems.length;
+        } else {
+          count = galleryItems.filter(item => item.category === folder.id).length;
+        }
+
+        const btn = document.createElement('button');
+        btn.onclick = () => setGalleryFilter(folder.id);
+        
+        const isSelected = currentActiveFolderFilter === folder.id;
+        btn.className = `p-5 rounded-2xl border text-center transition-all duration-300 relative group overflow-hidden ${
+          isSelected 
+            ? 'border-[#253041] bg-white shadow-md scale-[1.02]' 
+            : 'border-orange-100/40 bg-[#FFF8EE] hover:bg-orange-50 hover:shadow-xs'
+        }`;
+
+        let iconMarkup = `<i class="fa-solid fa-folder text-3xl ${folder.color} mx-auto mb-2 block"></i>`;
+        if (folder.id === 'all') {
+          iconMarkup = `<i class="fa-solid fa-folder-open text-3xl ${folder.color} mx-auto mb-2 block"></i>`;
+        }
+
+        btn.innerHTML = `
+          <div class="absolute top-0 left-0 w-full h-1 bg-[#253041] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          ${iconMarkup}
+          <span class="text-xs font-bold block text-[#253041] truncate">${folder.title}</span>
+          <span class="text-[10px] text-gray-400 font-bold">(${count} ภาพ)</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    // Filter gallery images by folder id
+    function setGalleryFilter(folderId) {
+      currentActiveFolderFilter = folderId;
+      renderFoldersGrid();
+      renderGalleryGrid();
+    }
+
+    // Render filtered gallery items
+    function renderGalleryGrid() {
+      const container = document.getElementById('gallery-images-grid');
+      container.innerHTML = '';
+
+      const filtered = galleryItems.filter(item => currentActiveFolderFilter === 'all' || item.category === currentActiveFolderFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-dashed border-gray-200">
+            <i class="fa-solid fa-images text-gray-300 text-4xl mb-3 block"></i>
+            <p class="text-sm font-bold text-gray-500">ยังไม่มีภาพในอัลบั้มนี้</p>
+            <button onclick="setGallerySubTab('upload')" class="mt-3 inline-flex items-center gap-1.5 bg-[#253041] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-800 transition">
+              <i class="fa-solid fa-plus"></i> เพิ่มรูปภาพลงอัลบั้มนี้
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const folderInfo = foldersList.find(f => f.id === item.category);
+        const folderTitle = folderInfo ? folderInfo.title : item.category;
+
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-3xl overflow-hidden border border-orange-50 shadow-xs hover:shadow-md transition duration-300 group";
+        card.innerHTML = `
+          <div class="relative aspect-video bg-gray-100 overflow-hidden">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            ${item.featured ? `
+              <span class="absolute top-3 left-3 bg-[#F6D78B] text-[#876210] text-[10px] font-bold px-2 py-1 rounded shadow-xs flex items-center gap-1">
+                <i class="fa-solid fa-star text-xs"></i> แนะนำหลัก
+              </span>
+            ` : ''}
+            <span class="absolute bottom-3 right-3 bg-[#253041]/70 backdrop-blur-xs text-white text-[9px] font-semibold px-2 py-0.5 rounded">
+              ${folderTitle}
+            </span>
+          </div>
+          <div class="p-6 space-y-2">
+            <h4 class="font-bold text-base text-[#253041] leading-tight group-hover:text-amber-800 transition">${item.title}</h4>
+            <p class="text-xs text-[#6E7787] leading-relaxed line-clamp-3">${item.desc}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Populate Folder Selector dynamic dropdown in Upload form
+    function renderFolderSelectorInForm() {
+      const select = document.getElementById('upload-target-album');
+      select.innerHTML = '';
+      foldersList.filter(f => f.id !== 'all').forEach(folder => {
+        const option = document.createElement('option');
+        option.value = folder.id;
+        option.textContent = folder.title;
+        select.appendChild(option);
+      });
+    }
+
+    // Color picker helper inside Album folder creator
+    function setNewAlbumColor(colorClass, buttonEl) {
+      tempAlbumColorSelected = colorClass;
+      document.querySelectorAll('.color-dot').forEach(btn => {
+        btn.className = "color-dot w-7 h-7 rounded-full border-2 border-transparent";
+      });
+      buttonEl.className = `color-dot w-7 h-7 rounded-full border-2 border-gray-800 scale-110 shadow-xs ${buttonEl.classList[2]}`; // Keep original background color classes
+    }
+
+    // CREATE NEW ALBUM FOLDER LOGIC (Browse Sub tab immediately receives this)
+    function handleCreateAlbum(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('new-album-name');
+      const descInput = document.getElementById('new-album-desc');
+      const statusBox = document.getElementById('album-status-msg');
+
+      const name = nameInput.value.trim();
+      if (!name) return;
+
+      const slug = name.toLowerCase().replace(/\s+/g, '-');
+      // Verify duplicates
+      if (foldersList.some(f => f.id === slug)) {
+        statusBox.className = "p-4 rounded-xl text-xs font-bold bg-red-50 text-red-800 border border-red-200 animate-fade-in";
+        statusBox.textContent = "มีอัลบั้มภาพชื่อนี้อยู่แล้วในระบบ กรุณาใช้ชื่ออื่น";
+        statusBox.classList.remove('hidden');
+        return;
+      }
+
+      // Add to state list
+      const newFolder = {
+        id: slug,
+        title: name,
+        icon: 'custom',
+        color: tempAlbumColorSelected
+      };
+      foldersList.push(newFolder);
+
+      // Clean inputs
+      nameInput.value = '';
+      descInput.value = '';
+
+      // Success visual feedback
+      statusBox.className = "p-4 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 animate-fade-in";
+      statusBox.textContent = `สร้างอัลบั้ม "${name}" ประสบความสำเร็จ! เชิญอัปโหลดภาพเข้าโฟลเดอร์ในแท็บถัดไป`;
+      statusBox.classList.remove('hidden');
+      setTimeout(() => statusBox.classList.add('hidden'), 4000);
+
+      // Refresh Folder grids
+      renderFoldersGrid();
+      renderFolderSelectorInForm();
+    }
+
+    // Preview uploaded file prior to sending to simulated DB
+    let currentBase64ImageFile = '';
+    function previewSelectedFile(event) {
+      const file = event.target.files[0];
+      const previewArea = document.getElementById('upload-preview-area');
+      
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          currentBase64ImageFile = e.target.result;
+          previewArea.innerHTML = `
+            <img src="${e.target.result}" alt="Preview" class="max-h-24 mx-auto rounded-lg object-cover shadow-xs mb-1">
+            <p class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> ดึงข้อมูลรูปภาพสำเร็จ!</p>
+          `;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Dynamic photo uploader submit logic (saves locally to array)
+    function handleImageUploadSubmit(event) {
+      event.preventDefault();
+      const titleInput = document.getElementById('upload-img-title');
+      const descInput = document.getElementById('upload-img-desc');
+      const urlInput = document.getElementById('upload-url-input');
+      const catSelect = document.getElementById('upload-target-album');
+      const featuredCheck = document.getElementById('upload-is-featured');
+      const statusBox = document.getElementById('upload-status-msg');
+
+      const title = titleInput.value.trim();
+      const desc = descInput.value.trim();
+      const url = urlInput.value.trim();
+      const category = catSelect.value;
+      const isFeatured = featuredCheck.checked;
+
+      // Ensure either base64 file or direct online URL is present
+      const finalImage = currentBase64ImageFile || url || 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=600';
+
+      if (!title) return;
+
+      const newItem = {
+        id: Date.now(),
+        title: title,
+        desc: desc || 'ไม่มีคำอธิบายเพิ่มเติม',
+        category: category,
+        featured: isFeatured,
+        image: finalImage
+      };
+
+      // Add to array
+      galleryItems.unshift(newItem);
+
+      // Reset form variables
+      titleInput.value = '';
+      descInput.value = '';
+      urlInput.value = '';
+      featuredCheck.checked = false;
+      currentBase64ImageFile = '';
+      document.getElementById('upload-file-input').value = '';
+      document.getElementById('upload-preview-area').innerHTML = `
+        <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 mb-2"></i>
+        <p class="text-xs text-gray-500 font-bold">กดที่นี่หรือลากไฟล์ภาพถ่ายเพื่อเลือกอัปโหลด</p>
+        <p class="text-[9px] text-gray-400">รองรับไฟล์ PNG, JPEG, GIF และไฟล์สากลอื่นๆ</p>
+      `;
+
+      // Display success message
+      statusBox.className = "p-4 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 animate-fade-in";
+      statusBox.textContent = "อัปโหลดและบันทึกรูปภาพกิจกรรมเสร็จสิ้นสมบูรณ์!";
+      statusBox.classList.remove('hidden');
+      setTimeout(() => statusBox.classList.add('hidden'), 4000);
+
+      // Re-populate Home featured carousel & Browse sections
+      renderHomeImages();
+      
+      // Auto-switch back to browse tab for visual completion
+      setTimeout(() => setGallerySubTab('browse'), 1000);
+    }
+
+    // Simulated News Auto-feed ticker and items generator
+    function renderNewsAutofeed() {
+      const container = document.getElementById('trends-feed-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      trendsList.forEach(feed => {
+        const row = document.createElement('div');
+        row.className = "bg-white p-6 rounded-3xl border border-orange-50 shadow-xs space-y-3 relative overflow-hidden";
+        row.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="bg-amber-50 text-amber-800 text-[10px] font-bold px-2 py-1 rounded">
+              ${feed.category}
+            </span>
+            <span class="text-[10px] text-gray-400 font-bold">แหล่งข่าว: ${feed.source}</span>
+          </div>
+          <h4 class="font-bold text-base text-[#253041]">${feed.title}</h4>
+          <p class="text-xs text-gray-600 leading-relaxed">${feed.desc}</p>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    // Populate top scrolling banner marquee list
+    function renderNewsTicker() {
+      const ticker = document.getElementById('marquee-holder');
+      if (!ticker) return;
+      ticker.innerHTML = '';
+
+      let text = '';
+      trendsList.forEach((feed, idx) => {
+        text += `💡 ${feed.title} - ${feed.desc} (${feed.source}) &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; `;
+      });
+
+      // Repeat twice for infinite flow
+      ticker.innerHTML = `${text} ${text}`;
+    }
+
+    // Public contact form submission simulator
+    function handleContactFormSubmit(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('contact-form-name');
+      const emailInput = document.getElementById('contact-form-email');
+      const subjectInput = document.getElementById('contact-form-subject');
+      const messageInput = document.getElementById('contact-form-message');
+      const successBox = document.getElementById('contact-success-msg');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !email || !message) return;
+
+      const newMail = {
+        id: Date.now(),
+        name: name,
+        contact: email,
+        subject: subject || 'ทั่วไป/สอบถามข้อมูล',
+        message: message,
+        date: new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' })
+      };
+
+      // Push to simulated local Database
+      messageDatabase.unshift(newMail);
+
+      // Clear inputs
+      nameInput.value = '';
+      emailInput.value = '';
+      subjectInput.value = '';
+      messageInput.value = '';
+
+      // Success Alert popup
+      successBox.textContent = "ส่งข้อความนิมนต์สำเร็จ! ข้อมูลถูกจัดเก็บลงฐานหลังบ้านของแอดมินเจ้าคณะเรียนแล้ว";
+      successBox.classList.remove('hidden');
+      setTimeout(() => successBox.classList.add('hidden'), 5000);
+    }
+
+    // Admin Dashboard login authentication check
+    function handleAdminLogin(event) {
+      event.preventDefault();
+      const password = document.getElementById('admin-password-input').value;
+      const errorBox = document.getElementById('login-error-msg');
+
+      if (password === 'dhamma123') {
+        isAuthorizedAdmin = true;
+        errorBox.classList.add('hidden');
+        document.getElementById('admin-password-input').value = '';
+        renderAdminDashboard();
+      } else {
+        errorBox.textContent = "รหัสผ่านจำลองไม่ถูกต้อง กรุณาใช้รหัส dhamma123";
+        errorBox.classList.remove('hidden');
+      }
+    }
+
+    // Admin Logout
+    function handleAdminLogout() {
+      isAuthorizedAdmin = false;
+      renderAdminDashboard();
+    }
+
+    // Populate and render Admin features dashboard
+    function renderAdminDashboard() {
+      const loginCard = document.getElementById('admin-login-card');
+      const authedPanel = document.getElementById('admin-authed-panel');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      if (!isAuthorizedAdmin) {
+        loginCard.classList.remove('hidden');
+        authedPanel.classList.add('hidden');
+        logoutBtn.classList.add('hidden');
+        return;
+      }
+
+      loginCard.classList.add('hidden');
+      authedPanel.classList.remove('hidden');
+      logoutBtn.classList.remove('hidden');
+
+      // Update counters summary metrics
+      document.getElementById('admin-stat-img-count').textContent = `${galleryItems.length} ภาพ`;
+      document.getElementById('admin-stat-folder-count').textContent = `${foldersList.length - 1} หมวดหมู่`;
+      document.getElementById('admin-stat-msg-count').textContent = `${messageDatabase.length} ฉบับ`;
+
+      // Render Admin received mail messages
+      const mailboxList = document.getElementById('admin-mailbox-list');
+      mailboxList.innerHTML = '';
+
+      if (messageDatabase.length === 0) {
+        mailboxList.innerHTML = '<p class="text-xs text-gray-400 text-center py-4">ตู้จดหมายว่างเปล่า ไม่มีข้อความใหม่</p>';
+        return;
+      }
+
+      messageDatabase.forEach(msg => {
+        const item = document.createElement('div');
+        item.className = "border border-orange-100 bg-[#FFF8EE]/40 p-5 rounded-2xl space-y-3 relative overflow-hidden";
+        item.innerHTML = `
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+            <div>
+              <span class="font-bold text-sm text-[#253041] block">${msg.name}</span>
+              <span class="text-xs text-gray-400 block sm:inline">ช่องทางติดต่อกลับ: <span class="font-bold text-gray-700">${msg.contact}</span></span>
+            </div>
+            <span class="text-xs text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-100 self-start sm:self-center">
+              ${msg.date}
+            </span>
+          </div>
+          <p class="text-xs font-bold text-indigo-950">หัวข้อ: ${msg.subject}</p>
+          <p class="text-xs text-gray-600 leading-relaxed bg-white p-4 rounded-xl border border-gray-50">${msg.message}</p>
+          <button onclick="handleDeleteMessage(${msg.id})" class="absolute bottom-4 right-4 text-xs font-bold text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i> ลบจดหมาย</button>
+        `;
+        mailboxList.appendChild(item);
+      });
+    }
+
+    // Delete contact mailbox message
+    function handleDeleteMessage(msgId) {
+      messageDatabase = messageDatabase.filter(m => m.id !== msgId);
+      renderAdminDashboard();
+    }
+
+    // Add new trend submit on Admin Panel
+    function handleAddNewTrendSubmit(event) {
+      event.preventDefault();
+      const titleInput = document.getElementById('new-trend-title');
+      const catInput = document.getElementById('new-trend-cat');
+      const descInput = document.getElementById('new-trend-desc');
+
+      const title = titleInput.value.trim();
+      const cat = catInput.value.trim();
+      const desc = descInput.value.trim();
+
+      if (!title || !desc) return;
+
+      const newTrend = {
+        id: Date.now(),
+        title: title,
+        category: cat || 'Global Tech',
+        desc: desc,
+        source: 'Admin Ticker Feed'
+      };
+
+      trendsList.unshift(newTrend);
+
+      // Reset
+      titleInput.value = '';
+      catInput.value = '';
+      descInput.value = '';
+
+      // Re-render
+      renderNewsAutofeed();
+      renderNewsTicker();
+      renderAdminDashboard();
+    }
+
+  </script>
+</body>
+</html>
